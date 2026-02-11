@@ -1,0 +1,5 @@
+<div class="input-counter">
+    <button type="button" class="input-counter--decrement" (click)="decrement()" [disabled]="value <= 1">-</button>
+    <span class="input-counter--value">{{ value }}</span>
+    <button type="button" class="input-counter--increment" (click)="increment()" [disabled]="value >= 100">+</button>
+</div>
