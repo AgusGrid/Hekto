@@ -1,4 +1,4 @@
-<div class="card" [ngClass]="'card--' + variant">
+<div class="card" [ngClass]="'card--' + variant" [class.card--skeleton]="loading">
     <ng-container [ngSwitch]="variant">
 
         <!-- Featured Variant -->

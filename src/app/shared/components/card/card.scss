@@ -3,9 +3,9 @@
 // ============================================
 // LOCAL VARIABLES
 // ============================================
-$card-shadow: 8px 24px 32px -16px #10175026;
-$card-border-radius: 4px;
-$card-border-radius-large: 8px;
+$card-shadow: .5rem .75rem -1rem #10175026;
+$card-border-radius: 0.25rem;
+$card-border-radius-large: 0.5rem;
 $card-transition-duration: 0.3s;
 $card-transition-ease: ease;
 $card-transition-cubic: cubic-bezier(0.4, 0, 0.2, 1);
@@ -560,6 +560,117 @@ $card-gap-lg: 1rem;
                 align-items: center;
                 gap: $card-padding-lg;
                 margin-top: auto;
+            }
+        }
+    }
+
+    // ============================================
+    // SKELETON MODE 
+    // ============================================
+    @keyframes pulse {
+        0%, 100% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.6;
+        }
+    }
+
+    &--skeleton {
+        pointer-events: none;
+        box-shadow: none !important;
+        
+        .card-image-wrapper {
+            position: relative;
+            
+            &::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: $grey-1;
+                animation: pulse 1.5s ease-in-out infinite;
+                z-index: 2;
+                pointer-events: none;
+            }
+            
+            img {
+                opacity: 0;
+            }
+            
+            button,
+            .card-actions {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+        
+        .card-content {
+            position: relative;
+            border-radius: $card-border-radius-large;
+            
+            &::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: $grey-1;
+                animation: pulse 1.5s ease-in-out infinite;
+                z-index: 2;
+                pointer-events: none;
+            }
+            
+            p, span, a, div {
+                visibility: hidden;
+                opacity: 0;
+            }
+            
+            img {
+                opacity: 0;
+                visibility: hidden;
+            }
+            
+            button {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+        
+        &.card--blog {
+            background-color: transparent !important;
+            
+            .card-image-wrapper::after {
+                border-radius: $card-border-radius-large $card-border-radius-large 0 0;
+                background: $grey-1;
+                animation: pulse 1.5s ease-in-out infinite;
+            }
+            
+            .card-content {
+                background-color: transparent !important;
+                
+                &::after {
+                    border-radius: 0 0 $card-border-radius-large $card-border-radius-large;
+                    background: $grey-1;
+                    animation: pulse 1.5s ease-in-out infinite;
+                }
+            }
+        }
+        
+        &.card--filter-wide {
+            background-color: transparent !important;
+            
+            .card-content {
+                background-color: transparent !important;
+            }
+        }
+        
+        &.card--top-category {
+            .card-image-wrapper::after {
+                border-radius: 12.5rem;
             }
         }
     }

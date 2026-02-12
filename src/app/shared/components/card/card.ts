@@ -13,6 +13,7 @@ export type CardVariant = 'featured' | 'latest' | 'trending' |
 })
 export class Card {
   @Input() variant: CardVariant = 'featured';
+  @Input() loading: boolean = false;
   @Input() image?: string;
   @Input() title?: string;
   @Input() description?: string;

@@ -518,8 +518,21 @@
             description="Magna in est adipiscing in phasellus non in justo."
           />
         </div>
-    
-
       </div>
+
+      <div class="subsection" >
+        <h3>Skeleton Preloaders</h3>
+        <div class="showcase card-showcase" style="display: flex; gap: 2rem; flex-wrap: wrap; background-color: #8A8FB9;">
+          <app-card variant="featured" [loading]="true" />
+          <app-card variant="latest" [loading]="true" />
+          <app-card variant="trending" [loading]="true" />
+          <app-card variant="top-category" [loading]="true" />
+          <app-card variant="blog" [loading]="true" />
+          <app-card variant="filter-grid" [loading]="true" />
+          <app-card variant="filter-wide" [loading]="true" />
+        </div>
+      </div>
+
+    
     </section>
   </div>
