@@ -259,7 +259,7 @@
       <div class="subsection">
         <div class="showcase button-showcase" style="display: flex; gap: 1rem; align-items: center;">
             <button class="button">shop now</button>
-            <button class="button--icon-only">
+            <button class="button--icon-only" >
                 <img src="/icons/shared/search.svg" alt="search" >
             </button>
             <button class="button--success">shop now</button>
@@ -362,6 +362,164 @@
             <span class="checkbox__custom checkbox__custom--green"></span>
           </label>
         </div>
+      </div>
+    </section>
+
+    <!-- Card -->
+    <section class="ui-kit-section">
+      <h2>Card</h2>
+
+      <div class="subsection">
+        <h3>Featured</h3>
+        <div class="showcase card-showcase" style="display: flex; gap: 2rem;">
+          <app-card 
+            variant="featured" 
+            image="/images/products/watches.jpg"
+            title="Watches"
+            code="Y523201"
+            price="$42.00"
+          />
+
+          <app-card 
+            variant="featured" 
+            image="/images/products/headphones.jpg"
+            title="Headphones"
+            code="Y523201"  
+            price="$90.00"
+          />
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>Latest</h3>
+        <div class="showcase card-showcase" style="display: flex; gap: 2rem;">
+          <app-card 
+            variant="latest"
+            image="/images/products/laptop.jpg"
+            title="Laptop"
+            discountPrice="$89.00"
+            price="$99.00"
+          />
+
+          <app-card 
+            variant="latest"
+            image="/images/products/watches-2.jpg"
+            title="Watches"
+            discountPrice="$35.00"
+            price="$55.00"
+          />
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>Trending</h3>
+        <div class="showcase card-showcase" style="display: flex; gap: 2rem;">
+          <app-card 
+            variant="trending"
+            image="/images/products/playstation.jpg"
+            title="Playstation"
+            discountPrice="$76.00"
+            price="$89.00"
+          />
+
+          <app-card 
+            variant="trending"
+            image="/images/products/shoes.jpg"
+            title="Shoes"
+            discountPrice="$57.00"
+            price="$75.00"
+          />
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>Top Category</h3>
+        <div class="showcase card-showcase" style="display: flex; gap: 2rem;">
+          <app-card 
+            variant="top-category"
+            image="/images/products/perfume.jpg"
+            title="Scelerisque dignissim"
+          />
+
+          <app-card 
+          variant="top-category"
+          image="/images/products/box.jpg"
+          title="Box"
+        />
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>Blog</h3>
+        <div class="showcase card-showcase" style="display: flex; gap: 2rem;">
+          <app-card 
+            variant="blog"
+            image="/images/blog/1.jpg"
+            title="Top essential Trends in 2023"
+            date="21 August, 2023"
+            author="John Doe"
+            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit hendrerit ex."
+          />
+
+          <app-card 
+            variant="blog"
+            image="/images/blog/2.jpg"
+            title="Top essential Trends in 2021"
+            date="21 August, 2023"
+            author="John Doe"
+            description="Nullam nec fringilla erat, ac dapibus nunc. Integer semper ipsum in fermentum aliquam. "
+          />
+        </div>
+      </div>
+
+      <div class="subsection">
+        <h3>Filter Grid</h3>
+        <div class="showcase card-showcase" style="display: flex; gap: 2rem; flex-direction: column;">
+          <app-card 
+            variant="filter-grid"
+            image="/images/products/watches.jpg"
+            title="Watches"
+            price="$62.00"
+            discountPrice="$42.00"
+            [rating]="4"
+            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo."
+          />
+          <app-card
+          variant="filter-grid"
+          image="/images/products/headphones.jpg"
+          title="Headphones"
+          price="$99.00"
+          discountPrice="$90.00"
+          [rating]="3"
+          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo."
+        />
+        </div>
+      </div>
+      
+      <div class="subsection">
+        <h3>Filter Wide</h3>
+        <div class="showcase card-showcase" style="display: flex; gap: 2rem; flex-direction: row;">
+          <app-card
+            variant="filter-wide"
+            image="/images/products/watches.jpg"
+            title="Watches"
+            price="$62.00"
+            discountPrice="$42.00"
+            [rating]="4"
+            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo."
+          />
+          <app-card
+            variant="filter-wide"
+            image="/images/products/headphones.jpg"
+            title="Headphones"
+            price="$99.00"
+            discountPrice="$90.00"
+            [rating]="4"
+            description="Magna in est adipiscing in phasellus non in justo."
+          />
+        </div>
+    
+
       </div>
     </section>
   </div>

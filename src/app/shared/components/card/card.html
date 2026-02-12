@@ -1,0 +1,190 @@
+<div class="card" [ngClass]="'card--' + variant">
+    <ng-container [ngSwitch]="variant">
+
+        <!-- Featured Variant -->
+        <div *ngSwitchCase="'featured'">
+            <div class="card-image-wrapper">
+                <img class="card-image" [src]="image || '/images/products/watches.jpg'" [alt]="title || 'card-image'">
+                <div class="card-actions">
+                    <button class="button--shopping-cart">
+                        <img src="/icons/shared/cart.svg" alt="cart">
+                    </button>
+                    <button class="button--shopping-cart">
+                        <img src="/icons/shared/heart.svg" alt="favorite">
+                    </button>
+                    <button class="button--shopping-cart">
+                        <img src="/icons/shared/search-tertiary.svg" alt="search">
+                    </button> 
+                </div>
+                <button class="button--view-details button--success">View Details</button>
+            </div>
+
+            <div class="card-content">
+                <p class="card-title label-bold">{{ title || 'Card Title' }}</p>
+                <div class="card-info">
+                    <p class="card-info-text label-small">Code - {{ code || 'Card Code' }}</p>
+                    <p class="card-info-price label-bold">{{ price || 'Card Price' }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Latest Variant -->
+         <div *ngSwitchCase="'latest'">
+            <div class="card-image-wrapper">
+                <img [src]="image || '/images/products/watches.jpg'" [alt]="title || 'card-image'">
+                <div class="card-actions">
+                    <button class="button--shopping-cart">
+                        <img src="/icons/shared/cart.svg" alt="cart">
+                    </button>
+                    <button class="button--shopping-cart">
+                        <img src="/icons/shared/heart.svg" alt="favorite">
+                    </button>
+                    <button class="button--shopping-cart">
+                        <img src="/icons/shared/search-tertiary.svg" alt="search">
+                    </button> 
+                </div>
+            </div>
+            <div class="card-content">
+                <p class="card-title label">{{ title || 'Card Title' }}</p>
+                <div class="card-info">
+                    <p class="card-info--discount label">{{ discountPrice || 'Card Discount Price' }}</p>
+                    <p class="card-info--price label-small">{{ price || 'Card Price' }}</p>
+                </div>
+            </div>
+         </div>
+
+        <!-- Trending Variant -->
+        <div *ngSwitchCase="'trending'">
+            <div class="card-image-wrapper">
+                <img [src]="image || '/images/products/watches.jpg'" [alt]="title || 'card-image'">
+            </div>
+            <div class="card-content">
+                <p class="card-title label">{{ title || 'Card Title' }}</p>
+                <div class="card-info">
+                    <p class="card-info--discount label">{{ discountPrice || 'Card Discount Price' }}</p>
+                    <p class="card-info--price label-small">{{ price || 'Card Price' }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Top Category Variant -->
+        <div *ngSwitchCase="'top-category'">
+            <div class="card-image-wrapper">
+                <img [src]="image || '/images/products/watches.jpg'" [alt]="title || 'card-image'">
+                <button class="button--view-category button--success">View Category</button>
+            </div>
+      
+            <div class="card-content">
+                <p class="card-title subtitle-3">{{ title || 'Card Title' }}</p>
+            </div>
+        </div>
+
+        <!-- Blog Variant -->
+        <div *ngSwitchCase="'blog'">
+            <div class="card-image-wrapper">
+                <img [src]="image || '/images/products/watches.jpg'" [alt]="title || 'card-image'">
+            </div>
+            <div class="card-content">
+                <div class="card-info"> 
+                    <div class="card-info-item">
+                        <img src="/icons/shared/pen.svg" alt="author" class="card-info-icon">
+                        <span class="label-small">{{ author || 'Card Author' }}</span>
+                    </div>
+                    <div class="card-info-item">
+                        <img src="/icons/shared/calendar.svg" alt="date" class="card-info-icon">
+                        <span class="label-small">{{ date || 'Card Date' }}</span>
+                    </div>
+                </div>
+                <div class="card-description">
+                    <p class="card-title subtitle-4">{{ title || 'Card Title' }}</p>
+                    <p class="card-description-text body-text">{{ description || 'Card Description' }}</p>
+               
+                </div>
+                <a href="#" class="card-read-more">Read More</a>
+            </div>
+        </div>
+
+        <!-- Filter Grid Variant -->
+        <div *ngSwitchCase="'filter-grid'">
+            <div class="card-image-wrapper">
+                <img [src]="image || '/images/products/watches.jpg'" [alt]="title || 'card-image'">
+            </div>
+            <div class="card-content">
+                <div class="card-header">
+                    <p class="card-title subtitle-3">{{ title || 'Card Title' }}</p>
+                    <div class="card-rating">
+                        <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
+                            <img 
+                                *ngIf="(i + 1) <= (rating || 0)" 
+                                src="/icons/shared/star-active.svg" 
+                                [alt]="'star ' + (i + 1)">
+                            <img 
+                                *ngIf="(i + 1) > (rating || 0)" 
+                                src="/icons/shared/star.svg" 
+                                [alt]="'star ' + (i + 1)">
+                        </ng-container>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="card-info">
+                        <p class="card-info--discount label">{{ discountPrice || 'Card Discount Price' }}</p>
+                        <p class="card-info--price label-small">{{ price || 'Card  Price' }}</p>
+                    </div>
+                </div>
+                <p class="card-description-text body-text">{{ description || 'Card Description' }}</p>
+                <div class="card-actions">
+                    <button class="button--shopping-cart">
+                        <img src="/icons/shared/cart.svg" alt="cart">
+                    </button>
+                    <button class="button--shopping-cart">
+                        <img src="/icons/shared/heart.svg" alt="favorite">
+                    </button>
+                    <button class="button--shopping-cart">
+                        <img src="/icons/shared/search-tertiary.svg" alt="search">
+                    </button>
+                </div>
+            </div>
+        </div>
+
+          <!-- Filter Wide Variant -->
+          <div *ngSwitchCase="'filter-wide'">
+            <div class="card-image-wrapper">
+                <img [src]="image || '/images/products/watches.jpg'" [alt]="title || 'card-image'">
+            </div>
+            <div class="card-content">
+                <p class="card-title subtitle-3">{{ title || 'Card Title' }}</p>
+                <div class="card-rating">
+                    <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
+                        <img 
+                            *ngIf="(i + 1) <= (rating || 0)" 
+                            src="/icons/shared/star-active.svg" 
+                            [alt]="'star ' + (i + 1)">
+                        <img 
+                            *ngIf="(i + 1) > (rating || 0)" 
+                            src="/icons/shared/star.svg" 
+                            [alt]="'star ' + (i + 1)">
+                    </ng-container>
+                </div>
+                <div class="card-info">
+                    <p class="card-info--discount label">{{ discountPrice || 'Card Discount Price' }}</p>
+                    <p class="card-info--price label-small">{{ price || 'Card  Price' }}</p>
+                </div>
+
+                <p class="card-description-text body-text">{{ description || 'Card Description' }}</p>
+                <div class="card-actions">
+                    <button class="button--shopping-cart">
+                        <img src="/icons/shared/cart.svg" alt="cart">
+                    </button>
+                    <button class="button--shopping-cart">
+                        <img src="/icons/shared/heart.svg" alt="favorite">
+                    </button>
+                    <button class="button--shopping-cart">
+                        <img src="/icons/shared/search-tertiary.svg" alt="search">
+                    </button>
+                </div>
+               
+            </div>
+   
+          </div>
+    </ng-container>
+</div>
