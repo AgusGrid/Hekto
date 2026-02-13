@@ -1,18 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { UiKitComponent } from '@pages/ui-kit/ui-kit.component';
 
-import { UiKit } from './ui-kit';
-
-describe('UiKit', () => {
-  let component: UiKit;
-  let fixture: ComponentFixture<UiKit>;
+describe('UiKitComponent', () => {
+  let component: UiKitComponent;
+  let fixture: ComponentFixture<UiKitComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [UiKit]
+      imports: [UiKitComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(UiKit);
+    fixture = TestBed.createComponent(UiKitComponent);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

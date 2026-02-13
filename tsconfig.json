@@ -13,6 +13,18 @@
     "target": "ES2022",
     "module": "ES2022",
     "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "baseUrl": "src",
+    "paths": {
+      "@app/*": ["app/*"],
+      "@components/*": ["app/shared/components/*"],
+      "@shared/*": ["app/shared/*"],
+      "@models/*": ["app/models/*"],
+      "@pages/*": ["app/pages/*"],
+      "@config/*": ["app/config/*"],
+      "@environment/*": ["environments/*"],
+      "@helpers/*": ["app/helpers/*"]
+    },
     "lib": [
       "ES2023",
       "DOM",
