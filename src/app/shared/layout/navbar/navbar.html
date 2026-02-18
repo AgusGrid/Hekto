@@ -1,0 +1,69 @@
+<header class="navbar">
+   <div class="navbar-top-bar">
+    <div class="navbar-top-bar-left">
+        <span class="navbar-top-bar-left-item">
+          <app-icon name="mail" size="14" color="white"></app-icon> 
+            <a href="#" class="subtitle-4">mhhasanul@gmail.com</a>
+        </span>
+        <span class="navbar-top-bar-left-item">
+            <app-icon name="phone-call" size="14" color="white"></app-icon>
+            <a href="#" class="subtitle-4">(12345)67890</a>
+        </span>
+    </div>
+    <div class="navbar-top-bar-right">
+        <select class="select-minimal" >
+            <option selected value="en">English</option>
+            <option value="es">Spanish</option>
+            <option value="fr">French</option>
+            <option value="de">German</option>
+        </select>
+        <select class="select-minimal" >
+            <option selected value="usd">USD</option>
+            <option value="eur">EUR</option>
+            <option value="gbp">GBP</option>
+            <option value="jpy">JPY</option>
+        </select>
+        <span class="navbar-top-bar-right-item">
+            <a href="#" class="subtitle-4">Login</a>
+            <app-icon name="user" size="14" color="white"></app-icon>
+        </span>
+        <span class="navbar-top-bar-right-item">
+            <a href="#" class="subtitle-4">Wishlist</a>
+            <app-icon name="heart" size="14" color="white"></app-icon>
+                
+        </span>
+        <span class="navbar-top-bar-right-item">
+            <a href="#">Cart</a>
+            <app-icon name="cart" size="14" color="white"></app-icon>
+        </span>
+            
+    </div>
+   </div>
+   <div class="navbar-bottom-bar">
+    <div class="navbar-bottom-bar-left">
+        <div class="navbar-bottom-bar-left-logo">
+            <img src="/logo/Logo.svg" alt="logo">
+        </div>
+        <ul class="navbar-bottom-bar-left-menu">
+            @for (item of menuItems; track item.path) {
+                <li class="navbar-bottom-bar-left-menu-item">
+                    <a 
+                        [routerLink]="item.path" 
+                        routerLinkActive="active" 
+                        [routerLinkActiveOptions]="{exact: item.path === '/'}">
+                        {{ item.label }}
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
+    <div class="navbar-bottom-bar-right">
+        <div class="input-complex">
+            <input type="text" placeholder="Search">
+            <button class="button--icon-only">
+                <img src="/icons/shared/search.svg" alt="search" >
+            </button>
+        </div>
+    </div>
+   </div>
+</header>

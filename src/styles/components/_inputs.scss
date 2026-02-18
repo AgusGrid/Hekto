@@ -243,3 +243,53 @@ select {
       transform: scale(1.05);
     }
   }
+
+  select.select-minimal {
+    min-width: auto;
+    max-width: none;
+    height: auto;
+    border-radius: 0;
+    border: none;
+    text-transform: none;
+    padding: 0;
+    font-size: inherit;
+    line-height: inherit;
+    font-weight: inherit;
+    color: inherit;
+
+    appearance: none;
+    background: none;
+    margin: 0;
+    font-family: inherit;
+    cursor: pointer;
+    outline: none;
+
+    background-image: url('/icons/shared/chevron-down.svg');
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: 0.75rem;
+    padding-right: 1rem;
+    
+    &::-ms-expand {
+        display: none;
+    }
+    
+    &:hover {
+        opacity: 0.8;
+        outline: none;
+    }
+    
+    &:focus {
+        outline: none;
+    }
+    
+    option {
+        background-color: $white;
+        color: $black;
+        padding: 0.75rem 1rem;
+        font-size: inherit;
+        line-height: 1.5;
+        transition: background-color 0.2s ease, color 0.2s ease;
+
+    }
+}
