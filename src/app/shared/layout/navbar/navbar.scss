@@ -1,0 +1,115 @@
+@use '../../../../styles/abstracts/variable' as *;
+
+.navbar {
+    color: $white;
+    
+    &-top-bar {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        background-color: $tertiary;
+        height: 3rem;
+
+        &-left {
+            display: flex;
+            align-items: center;
+            gap: 2rem;  
+
+            &-item {
+                display: flex;
+                align-items: center;
+                gap: .5rem;
+            }
+        }
+
+        &-right {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 2rem;
+
+            &-item {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+
+             
+            }
+        }
+    }
+
+    &-bottom-bar {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        height: 4.5rem;
+        background-color: $white;
+        color: $black;
+
+        &-left {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 3rem;
+     
+
+            &-logo {
+                display: flex;
+                align-items: center;
+                
+                img {
+                    height: auto;
+                    width: auto;
+                }
+            }
+
+            &-menu {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 2rem;
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                margin-top: 1rem;
+
+                &-item {
+                    display: inline-flex;
+                    align-items: center;
+                    
+                    a {
+                        text-decoration: none;
+                        color: inherit;
+                        font-size: 1rem;
+                        transition: color 0.2s ease;
+
+                        &:hover {
+                            color: $primary;
+                        }
+                        
+                        &.active {
+                            color: $primary;
+                        }
+                    }
+                }
+            }
+        }
+
+        &-right {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+            .input-complex {
+                height: 2.5rem;
+
+                button {
+                    height: 2.5rem;
+                }
+            }
+         
+        }
+    }
+
+}
+
+ 
