@@ -2,10 +2,12 @@ import { Component, OnInit, OnDestroy, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeroSlide } from '@models/hero-slide.model';
 import slidesData from './home.slides.json';
+import { FeaturedProducts } from './featured-products/featured-products';
+
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule],
+  imports: [CommonModule, FeaturedProducts],
   standalone: true,
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
