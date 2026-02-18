@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { SelectDropdown, SelectOption } from '@components/select-dropdown/select-dropdown';
 import { InputCounter } from '@components/input-counter/input-counter';
 import { Card } from '@components/card/card';
+import { Unique } from '@pages/unique/unique/unique';
 
 @Component({
   selector: 'app-ui-kit',
   standalone: true,
-  imports: [CommonModule, SelectDropdown, InputCounter, Card],
+  imports: [CommonModule, SelectDropdown, InputCounter, Card, Unique],
   templateUrl: './ui-kit.html',
   styleUrl: './ui-kit.scss',
 })
