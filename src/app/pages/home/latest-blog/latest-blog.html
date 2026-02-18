@@ -1,0 +1,16 @@
+<div class="latest-blog-container">
+    <h2 class="heading-2 latest-blog-content-title">Latest Blog</h2>
+    <div class="latest-blog-content-wrapper">
+        @for (blog of latestBlog(); track blog.id) {
+            <app-card
+                variant="blog"  
+                [image]="blog.image"
+                [title]="blog.title"
+                [description]="blog.description"
+                [date]="blog.date"
+                [author]="blog.author"
+                [description]="blog.description"
+            />
+        }
+    </div>
+</div>

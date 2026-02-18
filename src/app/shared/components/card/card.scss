@@ -320,13 +320,14 @@ $card-gap-lg: 1rem;
     // VARIANT: BLOG
     // ============================================
     &--blog {
-        width: 26rem;
-        height: 29.6875rem;
+        width: 20rem;
+        height: 20rem;
         display: grid;
         grid-template-rows: 60% auto;
         background-color: $white;
         border-radius: $card-border-radius-large;
         box-shadow: $card-shadow;
+        transition: all .5s ease;
     
         .card-image-wrapper {
             @extend %card-image-wrapper-base;
@@ -374,10 +375,6 @@ $card-gap-lg: 1rem;
                     margin: 0;
                     margin-top: $card-gap-sm;
                     transition: color $card-transition-duration $card-transition-ease;
-    
-                    &:hover {
-                        color: $primary;
-                    }
                 }
                 
                 .card-description-text {
@@ -396,6 +393,16 @@ $card-gap-lg: 1rem;
                 &:hover {
                     color: $primary-dark;
                 }
+            }
+        }
+
+        &:hover {
+            transform: translateY(-1rem);
+            box-shadow: 8px 24px 32px -16px #10175026;
+
+
+            .card-description .card-title {
+                color: $primary !important;
             }
         }
     }
