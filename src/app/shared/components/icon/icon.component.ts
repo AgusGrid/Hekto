@@ -27,6 +27,7 @@ export class IconComponent implements OnInit, OnChanges, OnDestroy {
   @Input() size: string = '14';
   @Input() color?: string;
   @Input() class?: string;
+  @Input() folder: string = 'shared';
 
   svgContent: SafeHtml = '';
   iconClass = 'icon';
@@ -48,7 +49,7 @@ export class IconComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes['name'] || changes['size']) this.loadIcon();
+    if (changes['name'] || changes['size'] || changes['folder']) this.loadIcon();
 
     if (changes['class']) {
       this.iconClass = 'icon';
@@ -64,7 +65,7 @@ export class IconComponent implements OnInit, OnChanges, OnDestroy {
   private loadIcon() {
     if (!this.name) return;
 
-    const cacheKey = `${this.name}_${this.size}`;
+    const cacheKey = `${this.folder}_${this.name}_${this.size}`;
 
     if (IconComponent.cache.has(cacheKey)) {
       const cachedSvg = IconComponent.cache.get(cacheKey)!;
@@ -72,7 +73,7 @@ export class IconComponent implements OnInit, OnChanges, OnDestroy {
       return;
     }
 
-    const iconPath = `/icons/shared/${this.name}.svg`;
+    const iconPath = `/icons/${this.folder}/${this.name}.svg`;
     this.http.get(iconPath, { responseType: 'text' })
       .pipe(takeUntil(this.destroy$))
       .subscribe({
