@@ -31,6 +31,12 @@
         <!-- Latest Variant -->
          <div *ngSwitchCase="'latest'">
             <div class="card-image-wrapper">
+                <ng-template [ngIf]="sale">
+                    <div class="card-sale">
+                        <img class="card-sale-icon" src="/icons/shared/sale-flag.svg" alt="sale">
+                        <p class="card-sale-text label-small">Sale</p>
+                    </div>
+                </ng-template>
                 <img [src]="image || '/images/products/watches.jpg'" [alt]="title || 'card-image'">
                 <div class="card-actions">
                     <button class="button--shopping-cart">

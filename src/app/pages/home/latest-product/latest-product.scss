@@ -1,0 +1,54 @@
+@use '../../../../styles/abstracts/variable' as *;
+
+.latest-product {
+    min-height: 47.25rem; 
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    &-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 3rem;
+    }
+
+    &-nav {
+        display: inline-block;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+
+        li {
+            display: inline-block;
+            margin-right: 64px;
+            cursor: pointer;
+        }
+        
+
+    }
+
+    &-title {
+        text-align: center;
+        margin-bottom: 1rem;
+        color: $black;
+    }
+
+    &__container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+        // minimum height based on 2 rows (maximum 6 products)
+        // 2 rows × 19rem (card height) + 1 gap of 32px
+        min-height: calc(2 * 19rem + 32px);
+        // fixed height per row to maintain consistency
+        grid-auto-rows: 19rem;
+        align-content: start;
+    }
+}

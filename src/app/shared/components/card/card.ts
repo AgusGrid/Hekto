@@ -20,7 +20,9 @@ export class Card {
   @Input() price?: string;
   @Input() code?: string;
   @Input() discountPrice?: string;
+  @Input() sale?: boolean = false;
   @Input() date?: string;
   @Input() author?: string;
   @Input() rating?: number;
+  
 }
