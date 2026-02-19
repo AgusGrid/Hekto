@@ -6,10 +6,10 @@ import { FeaturedProducts } from './featured-products/featured-products';
 import { LatestProducts } from './latest-products/latest-products';
 import { Unique } from './unique/unique';
 import { TrendingProduct } from './trending-product/trending-product';
-
+import { Discount } from './discount/discount';
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, FeaturedProducts, LatestProducts, Unique, TrendingProduct],
+  imports: [CommonModule, FeaturedProducts, LatestProducts, Unique, TrendingProduct, Discount],
   standalone: true,
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',

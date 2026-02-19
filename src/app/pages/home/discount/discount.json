@@ -1,0 +1,41 @@
+[
+    {
+        "id": 1,
+        "type": "Headphones",
+        "subtitle": "Headphones Compact",
+        "text": "The headphones are a perfect device for listening to music and watching movies.",
+        "list": [
+            "Material expose like metals",
+            "Clear lines and geometric figures",
+            "Simple neutral colours",
+            "Comfortable for long hours"     
+        ],
+        "img": "/images/discount/headphones.png"
+    },
+    {
+        "id": 2,
+        "type": "Laptop",
+        "subtitle": "Apple MacBook Air",
+        "text": "This laptop is a powerful device that is perfect for working and coding.",
+        "list": [
+            "Intel Core i5-12300H",
+            "16GB DDR4 RAM",
+            "512GB SSD",
+            "15.6 Full HD IPS Display"
+        ],
+        "img": "/images/discount/laptop.webp"
+    },
+    {
+        "id": 3,
+        "type": "Other",
+        "subtitle": "Jordan 1 Retro High Off-White White.",
+        "text": "Is a perfect limited edition sneaker for everyday wear.",
+        "list": [
+            "Sneaker style",
+            "Comfortable for long hours",
+            "Perfect for everyday wear",
+            "Perfect for working"
+        ],
+        "img": "/images/discount/shoes.avif"
+    }
+]
