@@ -172,10 +172,11 @@ $card-gap-lg: 1rem;
 
         .card-image-wrapper {
             @extend %card-image-wrapper-base;
-            object-fit: cover;
+            overflow: visible;
 
             img {
                 width: 100%;
+                height: 100%;
                 object-fit: cover;
             }
         }
@@ -205,6 +206,38 @@ $card-gap-lg: 1rem;
         }
 
         @extend %card-hover-actions;
+    }
+
+    .card-sale {
+        position: absolute;
+        top: 0;
+        left: -10px;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        width: 5.336rem;  
+        height: 3.531rem;
+    
+        color: $white;
+    
+        &-icon {
+            width: 5.336rem;
+            height: 3.531rem;
+            position: absolute;
+            top: 0.625rem;
+            left: 0;
+            z-index: 100;
+        }
+    
+        &-text {
+            position: absolute;
+            top: 1.875rem; 
+            left: 1.875rem; 
+            z-index: 100;
+            transform: rotate(-10deg)
+        }
     }
 
     // ============================================

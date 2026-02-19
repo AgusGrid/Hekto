@@ -1,0 +1,29 @@
+<section class="featured-products">
+    <h2 class="featured-products__title">Featured Products</h2>
+    <div class="featured-products__container">
+        <div class="featured-products__list">
+            <div 
+                *ngFor="let product of featuredProducts"
+                class="featured-products__card-wrapper"
+                (mouseenter)="onCardHover(product.id)"
+                (mouseleave)="onCardLeave()"
+            >
+                <app-card 
+                    variant="featured"
+                    [image]="product.image"
+                    [title]="product.name"
+                    [code]="product.code"
+                    [price]="formatPrice(product.price)"
+                />
+            </div>
+        </div>
+        <div class="featured-products__pagination">
+            <span 
+                *ngFor="let product of featuredProducts" 
+                class="featured-products__dot"
+                [class.featured-products__dot--active]="product.id === hoveredProductId"
+            ></span>
+        </div>
+    </div>
+   
+</section>
