@@ -7,9 +7,11 @@ import { LatestProducts } from './latest-products/latest-products';
 import { Unique } from './unique/unique';
 import { TrendingProduct } from './trending-product/trending-product';
 import { Discount } from './discount/discount';
+import { TopCategories } from './top-categories/top-categories';
+
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, FeaturedProducts, LatestProducts, Unique, TrendingProduct, Discount],
+  imports: [CommonModule, FeaturedProducts, LatestProducts, Unique, TrendingProduct, Discount, TopCategories  ],
   standalone: true,
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
