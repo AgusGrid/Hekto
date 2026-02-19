@@ -9,10 +9,11 @@ import { TrendingProduct } from './trending-product/trending-product';
 import { Discount } from './discount/discount';
 import { TopCategories } from './top-categories/top-categories';
 import { Newsletter } from './newsletter/newsletter';
+import { LatestBlog } from './latest-blog/latest-blog';
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, FeaturedProducts, LatestProducts, Unique, TrendingProduct, Discount, TopCategories, Newsletter  ],
+  imports: [CommonModule, FeaturedProducts, LatestProducts, Unique, TrendingProduct, Discount, TopCategories, Newsletter, LatestBlog  ],
   standalone: true,
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
