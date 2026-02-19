@@ -1,0 +1,26 @@
+[ 
+    {
+        "image": "/images/products/watches-2.jpg",
+        "title": "Black watches",
+        "discountPrice": "$35.00",
+        "price": "$55.00"   
+    },
+    {
+        "image": "/images/products/laptop.jpg",
+        "title": "Laptop",
+        "discountPrice": "$89.00",
+        "price": "$99.00"
+    },
+    {
+        "image": "/images/products/headphones.jpg",
+        "title": "Headphones",
+        "discountPrice": "$90.00",
+        "price": "$99.00"
+    },
+    {
+        "image": "/images/products/watches.jpg",
+        "title": "Watches",
+        "discountPrice": "$42.00",
+        "price": "$62.00"
+    }
+]   

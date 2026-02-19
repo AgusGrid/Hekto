@@ -1,0 +1,29 @@
+@use '../../../../styles/abstracts/variable' as *;
+
+.newsletter-container {
+    width: 100%;
+    min-height: 27rem;
+    height: fit-content;
+    background: url("/images/newsletter/newsletter-background.png") no-repeat center center;
+    background-size: cover;
+    background-position: center 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .newsletter-content {
+        text-align: center;
+        display: flex;
+        width: fit-content;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+
+        &-title {
+            color: $black;
+        }
+    }
+    
+}
