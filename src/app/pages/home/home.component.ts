@@ -3,11 +3,11 @@ import { CommonModule } from '@angular/common';
 import { HeroSlide } from '@models/hero-slide.model';
 import slidesData from './home.slides.json';
 import { FeaturedProducts } from './featured-products/featured-products';
-
+import { LatestProducts } from './latest-products/latest-products';
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, FeaturedProducts],
+  imports: [CommonModule, FeaturedProducts, LatestProducts],
   standalone: true,
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',

@@ -1,0 +1,41 @@
+<div class="latest-product">
+    <div class="latest-product-header">
+        <h2 class="latest-product-title">Latest Products</h2>
+        <ul class="latest-product-nav">
+            <li 
+                [ngClass]="{'active': activeCategory() === LatestProductCategory.NEW_ARRIVAL}" 
+                (click)="setActiveCategory(LatestProductCategory.NEW_ARRIVAL)">
+                New Arrival
+            </li>
+            <li 
+                [ngClass]="{'active': activeCategory() === LatestProductCategory.BEST_SELLERS}" 
+                (click)="setActiveCategory(LatestProductCategory.BEST_SELLERS)">
+                Best Sellers
+            </li>
+            <li 
+                [ngClass]="{'active': activeCategory() === LatestProductCategory.FEATURED}" 
+                (click)="setActiveCategory(LatestProductCategory.FEATURED)">
+                Featured
+            </li>
+            <li 
+                [ngClass]="{'active': activeCategory() === LatestProductCategory.SPECIAL_OFFER}" 
+                (click)="setActiveCategory(LatestProductCategory.SPECIAL_OFFER)">
+                Special Offer
+            </li>
+        </ul>
+    </div>
+    <div class="latest-product__container">
+        <div class="latest-product__grid">
+            @for (product of activeProducts(); track trackByProduct($index, product)) {
+                <app-card 
+                    variant="latest" 
+                    [image]="product.image"
+                    [title]="product.title"
+                    [discountPrice]="product.discountPrice"
+                    [price]="product.price"
+                    [sale]="product.sale"
+                />
+            }
+        </div>
+    </div>
+</div>
