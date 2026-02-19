@@ -1,0 +1,39 @@
+<section class="hero-section">
+    @for (slide of slides; track slide.id) {
+        @if (isActiveSlide(slide.id)) {
+            <div class="hero-container">
+                <div class="hero-content">
+                    <img class="hero-image-lamp" src="/images/home/lamp.png" alt="lamp light">
+                    <p class="body-text-large hero-subtitle">{{ slide.subtitle }}</p>
+                    <h1 class="heading-1 hero-title">New Trendy Collection <br>
+                        {{ slide.title }}</h1>
+                    <p class="body-text hero-description">
+                        {{ slide.description }}
+                    </p>
+                    <div class="hero-button-wrapper">
+                        <button class="button hero-button">Shop Now</button>
+                    </div>
+                </div>
+                <div class="hero-image-wrapper">
+                    <div class="hero-image-background"></div>
+                    <img class="hero-image" [src]="slide.image" [alt]="slide.imageAlt">
+                    <img class="hero-image-discount" src="/images/home/discount.svg" alt="50% off">
+                </div>
+            </div>
+        }
+    }
+
+    <div class="hero-slider-container">
+        @for (slide of slides; track slide.id) {
+            <button 
+                type="button"
+                class="hero-slider-item" 
+                [class.active]="isActiveSlide(slide.id)"
+                [attr.aria-label]="'Go to slide ' + (slide.id + 1)"
+                (click)="goToSlide(slide.id)">
+            </button>
+        }
+    </div>
+</section>
+<app-featured-products />
+<app-latest-products />
