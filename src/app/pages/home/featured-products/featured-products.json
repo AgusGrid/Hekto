@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "name": "Watches",
+        "price": 42.00,
+        "image": "/images/products/watches.jpg",
+        "code": "Y523201"
+    },
+    {
+        "id": 2,
+        "name": "Headphones",
+        "price": 90.00,
+        "image": "/images/products/headphones.jpg",
+        "code": "Y523202"
+    },
+    {
+        "id": 3,
+        "name": "Laptop",
+        "price": 3400.00,
+        "image": "/images/products/laptop.jpg",
+        "code": "Y523203"
+    },
+    {
+        "id": 4,
+        "name": "Black watches",
+        "price": 35.00,
+        "image": "/images/products/watches-2.jpg",
+        "code": "Y523204"
+    }
+]

@@ -1,0 +1,41 @@
+<div class="discount-container">
+    <div class="discount-container__header">
+        <h2 class="discount-container__title">Discount Item</h2>
+        <nav class="discount-container__nav">
+            <ul class="discount-container__nav-list">
+                @if (discountProducts && discountProducts.length > 0) {
+                    @for (product of discountProducts; track product.id) {
+                        <li 
+                            [ngClass]="{'active': activeItem() === product.id}"
+                            class="discount-container__nav-item body-large"
+                            (click)="setActiveItem(product.id)"
+                        >{{ product.type }}</li>
+                    }
+                }
+            </ul>
+        </nav>
+    </div>
+    <div class="discount-container__content">
+        <div class="discount-container__description">
+            <h3 class="discount-container__description-title">Get 20% off on all products</h3>
+            <p class="discount-container__description-subtitle subtitle-2">{{ discountProduct()?.subtitle }}</p>
+            <p class="discount-container__description-text body-text-large" 
+               [innerHTML]="discountProduct()?.text">
+            </p>
+            <ul class="discount-container__description-list">
+                @if (discountProduct() && discountProduct()?.list) {
+                    @for (item of discountProduct()?.list; track item) {
+                        <li class="discount-container__description-list-item body-text">{{ item }}</li>
+                    }
+                }
+            </ul>
+            <button class="discount-container__description-button button">Shop Now</button>
+        </div>
+        <div class="discount-container__image">
+            <img class="discount-container__image-elipse-1" src="/images/discount/elipse-1.svg" alt="discount">
+            <img class="discount-container__image-elipse-2" src="/images/discount/elipse-2.svg" alt="discount">
+            <img class="discount-container__image-headphones" [src]="discountProduct()?.img" alt="discount">
+        </div>
+    </div>
+
+</div>
