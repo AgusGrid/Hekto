@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SelectDropdown, SelectOption } from '@components/select-dropdown/select-dropdown';
 import { InputCounter } from '@components/input-counter/input-counter';
 import { Card } from '@components/card/card';
-import { Unique } from '@pages/unique/unique/unique';
+import { Unique } from '@app/pages/home/unique/unique';
 
 @Component({
   selector: 'app-ui-kit',
