@@ -249,6 +249,9 @@ $card-gap-lg: 1rem;
         box-shadow: $card-shadow;
         display: grid;
         grid-template-rows: 70% auto;
+        box-shadow: 8px 24px 32px -16px #10175026;
+        transition: transform $card-transition-duration $card-transition-ease;
+
 
         .card-image-wrapper {
             @extend %card-image-wrapper-base;
@@ -282,6 +285,11 @@ $card-gap-lg: 1rem;
                     text-decoration: line-through;
                 }
             }
+        }
+
+        &:hover {
+            transform: translateY(-1rem);
+            box-shadow: 8px 64px 80px -16px #10175026;
         }
     }
 
