@@ -1,17 +1,18 @@
 import { Component, ChangeDetectionStrategy, computed, signal } from '@angular/core';
 import { Card } from '@components/card/card';
 import { CommonModule } from '@angular/common';
-import latestProductJson from './latest-product.json';
+import latestProductJson from './latest-products.json';
 import { LatestProductCategory, LatestProduct as LatestProductType } from '@models/latest-product.types';
 
 @Component({
-  selector: 'app-latest-product',
+  selector: 'app-latest-products',
+  standalone: true,
   imports: [CommonModule, Card],
-  templateUrl: './latest-product.html',
-  styleUrl: './latest-product.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush, // Optimización de rendimiento
+  templateUrl: './latest-products.html',
+  styleUrl: './latest-products.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush, 
 })
-export class LatestProduct {
+export class LatestProducts {
   LatestProductCategory = LatestProductCategory;
   activeCategory = signal<LatestProductCategory>(LatestProductCategory.NEW_ARRIVAL);
   readonly products: { [key in LatestProductCategory]: LatestProductType[] } = latestProductJson;

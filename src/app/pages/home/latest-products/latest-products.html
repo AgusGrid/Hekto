@@ -25,15 +25,17 @@
         </ul>
     </div>
     <div class="latest-product__container">
-        @for (product of activeProducts(); track trackByProduct($index, product)) {
-            <app-card 
-                variant="latest" 
-                [image]="product.image"
-                [title]="product.title"
-                [discountPrice]="product.discountPrice"
-                [price]="product.price"
-                [sale]="product.sale"
-            />
-        }
+        <div class="latest-product__grid">
+            @for (product of activeProducts(); track trackByProduct($index, product)) {
+                <app-card 
+                    variant="latest" 
+                    [image]="product.image"
+                    [title]="product.title"
+                    [discountPrice]="product.discountPrice"
+                    [price]="product.price"
+                    [sale]="product.sale"
+                />
+            }
+        </div>
     </div>
 </div>
