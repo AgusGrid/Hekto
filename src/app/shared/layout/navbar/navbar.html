@@ -47,12 +47,16 @@
         <ul class="navbar-bottom-bar-left-menu">
             @for (item of menuItems; track item.path) {
                 <li class="navbar-bottom-bar-left-menu-item">
-                    <a 
-                        [routerLink]="item.path" 
-                        routerLinkActive="active" 
-                        [routerLinkActiveOptions]="{exact: item.path === '/'}">
-                        {{ item.label }}
-                    </a>
+                    @if (item.enabled !== false) {
+                        <a 
+                            [routerLink]="item.path" 
+                            routerLinkActive="active" 
+                            [routerLinkActiveOptions]="{exact: item.path === '/'}">
+                            {{ item.label }}
+                        </a>
+                    } @else {
+                        <span class="disabled-link">{{ item.label }}</span>
+                    }
                 </li>
             }
         </ul>
