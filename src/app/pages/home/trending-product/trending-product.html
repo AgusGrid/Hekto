@@ -1,0 +1,13 @@
+<div class="trending-product-container">
+    <h2 class="trending-product-title">Trending Products</h2>
+    <div class="trending-product-list">
+        @for (product of trendingProduct(); track product.image) {
+            <app-card variant="trending" 
+                [image]="product.image"
+                [title]="product.title"
+                [discountPrice]="product.discountPrice"
+                [price]="product.price"
+            />
+        }
+    </div>
+</div>

@@ -1,0 +1,22 @@
+@use '../../../../styles/abstracts/variable' as *;
+
+.trending-product-container {
+    width: 100%;
+    min-height: 668px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+
+    .trending-product-title {
+        color: $black;
+    }
+
+    .trending-product-list {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+    }
+  
+}

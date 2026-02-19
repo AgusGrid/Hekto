@@ -1,0 +1,27 @@
+<div class="top-categories-container">
+    <h2 class="top-categories-title">Top Categories</h2>
+    <div class="top-categories-list">
+        @if (currentSlideCategories().length > 0) {
+            @for (category of currentSlideCategories(); track category.id) {
+                <app-card 
+                    variant="top-category"
+                    [image]="category.image"
+                    [title]="category.name"
+                />
+            }
+        } @else {
+            <p>No top categories found</p>
+        }
+    </div>
+    <div class="top-categories-slider-container">
+        @for (slide of [].constructor(totalSlides()); track $index) {
+            <button 
+                type="button"
+                class="top-categories-slider-item" 
+                [class.active]="isActiveSlide($index)"
+                [attr.aria-label]="'Go to slide ' + ($index + 1)"
+                (click)="goToSlide($index)">
+            </button>
+        }
+    </div>
+</div>
