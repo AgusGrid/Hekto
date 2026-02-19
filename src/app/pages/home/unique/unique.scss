@@ -1,0 +1,73 @@
+@use '../../../../styles/abstracts/variable' as *;
+
+.unique-container {
+    width: 100%;
+    min-height: 36rem;
+    background-color: #F1F0FF;
+    margin-top: -8rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    .unique-image-wrapper {
+        position: relative;
+
+        .unique-image-decor {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .unique-image-sofa {
+            position: absolute;
+            top: 50%;
+            left: 55%;
+            transform: translate(-50%, -50%);
+            width: 640px;
+            height: 576px;
+        }
+    }
+
+    .unique-header {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 3rem;
+
+        &-title {
+            color: $black;
+        }
+
+        .unique-features {
+            color: $grey-3;
+            list-style-type: disc;
+            margin-left: 1.5rem;
+
+            li::marker {
+                font-size: 2rem;
+            }
+
+            &-item:first-child::marker {
+                color: $primary;
+            }
+
+            &-item:nth-child(2)::marker {
+                color: $black;
+            }
+
+            &-item:nth-child(3)::marker {
+                color: $success;
+            }
+        }
+
+        .unique-product-info {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            color: $black;
+        }
+    }
+}
