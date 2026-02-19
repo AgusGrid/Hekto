@@ -1,0 +1,205 @@
+@use '../../../../styles/abstracts/variable' as *;
+
+.product-lister-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 6rem;
+
+    .product-lister-header h1 {
+        color: $black;
+        padding: 2rem;
+        margin: 3rem 0;
+    }
+
+    .product-lister-wrapper {
+       display: grid;
+       grid-template-columns: 1fr 4fr;
+       gap: 6rem;
+    }
+
+    .product-lister-filter {
+        display: flex;
+        flex-direction: column;
+        padding: 24px;
+        gap: 2rem;
+
+        &-item {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+
+            &-title {
+                color: $black;
+                font-weight: $font-bold;
+                font-size: 1rem;
+                margin: 0;
+                padding-bottom: 8px;
+                border-bottom: 1px solid $grey-2;
+            }
+
+            &-list {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+
+                &-item {
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+
+                    label {
+                        cursor: pointer;
+                        font-size: 0.875rem;
+                        color: $black;
+                    }
+
+                    span {
+                        display: flex;
+                        align-items: center;
+                        gap: 4px;
+                    }
+
+                    input[type="checkbox"] {
+                        width: 18px;
+                        height: 18px;
+                        cursor: pointer;
+                        appearance: none;
+                        border-radius: 2px;
+                        border: 1px solid;
+                        position: relative;
+                        flex-shrink: 0;
+
+                        &:checked {
+                            &::after {
+                                content: '✓';
+                                position: absolute;
+                                top: 50%;
+                                left: 50%;
+                                transform: translate(-50%, -50%);
+                                color: $white;
+                                font-size: 12px;
+                                font-weight: bold;
+                            }
+                        }
+                    }
+
+                    // Product Brand - Purple light unchecked, purple dark checked
+                    input[type="checkbox"][id^="product-brand"] {
+                        border-color: $info-light;
+                        background-color: $info-light;
+
+                        &:checked {
+                            background-color: $tertiary;
+                            border-color: $tertiary;
+                        }
+                    }
+
+                    // Discount Offer - Pink light unchecked, pink dark checked
+                    input[type="checkbox"][id^="discount-offer"] {
+                        border-color: $danger-light;
+                        background-color: $danger-light;
+
+                        &:checked {
+                            background-color: $primary;
+                            border-color: $primary;
+                        }
+                    }
+
+                    // Rating - Yellow checked
+                    input[type="checkbox"][id^="rating"] {
+                        border-color: $grey-2;
+                        background-color: transparent;
+
+                        &:checked {
+                            background-color: $secondary;
+                            border-color: $secondary;
+                        }
+                    }
+
+                    // Categories - Pink light unchecked, pink dark checked
+                    input[type="checkbox"][id^="categories"] {
+                        border-color: $danger-light;
+                        background-color: $danger-light;
+
+                        &:checked {
+                            background-color: $primary;
+                            border-color: $primary;
+                        }
+                    }
+
+                    // Price - Pink light unchecked, pink dark checked
+                    input[type="checkbox"][id^="price"] {
+                        border-color: $danger-light;
+                        background-color: $danger-light;
+
+                        &:checked {
+                            background-color: $primary;
+                            border-color: $primary;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .product-lister-content {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+      
+        gap: 2rem;
+
+        &-header {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+
+            gap: 64px;
+            height: 40px;
+
+            &-item {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+
+                label {
+                    color: $grey-3;
+                }
+           
+                select {
+                    color: $black;
+                }
+
+                &-view-grid, &-view-list {
+                    cursor: pointer;
+                    &:hover {
+                        transform: scale(1.05);
+                    }
+                }
+            }
+        }
+
+        &-body {
+            width: 100%;
+          
+
+            &.view-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
+            }
+
+            &.view-list {
+                display: flex;
+                flex-direction: column;
+                gap: 2rem;
+            }
+        }
+    }
+}
