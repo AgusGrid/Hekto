@@ -1,0 +1,108 @@
+[
+    {
+        "image": "/images/products/watches.jpg",
+        "title": "Watches",
+        "price": "$62",
+        "discountPrice": "$42",
+        "rating": 4,
+        "reviews": 100,
+        "brand": "Casio",
+        "category": "Watches",
+        "description": "The watches are a perfect device for telling time and looking stylish.",
+        "cashback": "20% Cashback",
+        "discountOffer": "25% Discount Offer"
+    },
+    {
+        "image": "/images/products/headphones.jpg",
+        "title": "Headphones",
+        "price": "$99",
+        "discountPrice": "$90",
+        "rating": 3,
+        "reviews": 100,
+        "brand": "Sony",
+        "category": "Headphones",
+        "description": "The headphones are a perfect device for listening to music and watching movies.",
+        "cashback": "5% Cashback Offer"
+    },
+    {
+        "image": "/images/products/laptop.jpg",
+        "title": "Laptop",
+        "price": "$99",
+        "discountPrice": "$89",
+        "rating": 2,
+        "reviews": 100,
+        "brand": "Apple",
+        "category": "Laptop",
+        "description": "The laptop is a perfect device for working and playing games."
+    },
+    {
+        "image": "/images/products/watches-2.jpg",
+        "title": "Black watches",
+        "price": "$55",
+        "discountPrice": "$35",
+        "rating": 4,
+        "reviews": 100,
+        "brand": "Casio",
+        "category": "Watches",
+        "description": "The watches are a perfect device for telling time and looking stylish.",
+        "discountOffer": "25% Discount Offer"
+    },
+    {
+        "image": "/images/products/playstation.jpg",
+        "title": "Game Console",
+        "price": "$76",
+        "discountPrice": "$89",
+        "rating": 4,
+        "reviews": 100,
+        "brand": "Sony",
+        "category": "Game Console",
+        "description": "The playstation is a perfect device for playing games and watching movies."
+    },
+    {
+        "image": "/images/products/shoes.jpg",
+        "title": "Shoes",
+        "price": "$75",
+        "discountPrice": "$57",
+        "rating": 4,
+        "reviews": 100,
+        "brand": "Nike",
+        "category": "Clothe",
+        "description": "The shoes are a perfect device for walking and running.",
+        "cashback": "20% Cashback"
+    },
+    {
+        "image": "/images/products/perfume.jpg",
+        "title": "Perfume",
+        "price": "$29",
+        "discountPrice": "$19",
+        "rating": 4,
+        "reviews": 100,
+        "brand": "Glossiness",
+        "category": "Perfume",
+        "description": "The perfume is a perfect device for smelling good and looking stylish."
+    },
+    {
+        "image": "/images/products/bracelet.png",
+        "title": "Bracelet",
+        "price": "$76",
+        "discountPrice": "$67",
+        "rating": 1,
+        "reviews": 100,
+        "brand": "Vke",
+        "category": "Jewelry",
+        "description": "The bracelet is a perfect device for wearing and looking stylish.",
+        "cashback": "5% Cashback Offer",
+        "discountOffer": "25% Discount Offer"
+    },
+    {
+        "image": "/images/products/ring.png",
+        "title": "Ring",
+        "price": "$65",
+        "discountPrice": "$56",
+        "rating": 5,
+        "reviews": 100,
+        "brand": "Glossiness",
+        "category": "Jewelry",
+        "description": "The ring is a perfect device for wearing and looking stylish."
+    }
+]
