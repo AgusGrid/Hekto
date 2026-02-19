@@ -4,10 +4,11 @@ import { HeroSlide } from '@models/hero-slide.model';
 import slidesData from './home.slides.json';
 import { FeaturedProducts } from './featured-products/featured-products';
 import { LatestProducts } from './latest-products/latest-products';
+import { Unique } from './unique/unique';
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, FeaturedProducts, LatestProducts],
+  imports: [CommonModule, FeaturedProducts, LatestProducts, Unique],
   standalone: true,
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
