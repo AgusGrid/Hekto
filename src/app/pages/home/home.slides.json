@@ -1,0 +1,26 @@
+[
+  {
+    "id": 0,
+    "subtitle": "Best Headphones For Your Life....",
+    "title": "Headphones",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.",
+    "image": "/images/home/group-image.png",
+    "imageAlt": "trendy headphones"
+  },
+  {
+    "id": 1,
+    "subtitle": "Best Laptop For Your Life....",
+    "title": "Laptop",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.",
+    "image": "/images/home/laptop.png",
+    "imageAlt": "trendy laptop"
+  },
+  {
+    "id": 2,
+    "subtitle": "Best Watches For Your Life....",
+    "title": "Watches",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.",
+    "image": "/images/home/watch.png",
+    "imageAlt": "trendy watches"
+  }
+]

@@ -1,0 +1,85 @@
+{ "new-arrival": [
+    {
+        "image": "/images/products/playstation.jpg",
+        "title": "Game console",
+        "discountPrice": "$76.00",
+        "price": "$89.00"
+    },
+    {
+        "image": "/images/products/shoes.jpg",
+        "title": "Shoes",
+        "discountPrice": "$57.00",
+        "price": "$75.00"
+    },
+    {
+        "image": "/images/products/perfume.jpg",
+        "title": "Perfume",
+        "discountPrice": "$19.00",
+        "price": "$29.00",
+        "sale": true
+    },
+    {
+        "image": "/images/products/present-box.jpg",
+        "title": "Present box",
+        "discountPrice": "$12.00",
+        "price": "$29.00"
+    },
+    {
+        "image": "/images/products/watches.jpg",
+        "title": "Watches",
+        "discountPrice": "$67.00",
+        "price": "$76.00"
+    },
+    {
+        "image": "/images/products/ring.jpg",
+        "title": "Ring",
+        "discountPrice": "$56.00",
+        "price": "$65.00"
+    }
+], "best-sellers": [
+    {
+        "image": "/images/products/watches.jpg",
+        "title": "Watches",
+        "discountPrice": "$67.00",
+        "price": "$76.00"
+    },
+    {
+        "image": "/images/products/ring.jpg",
+        "title": "Ring",
+        "discountPrice": "$56.00",
+        "price": "$65.00"
+    },
+    {
+        "image": "/images/products/shoes.jpg",
+        "title": "Shoes",
+        "discountPrice": "$57.00",
+        "price": "$75.00"
+    }
+], "featured": [
+    {
+        "image": "/images/products/ring.jpg",
+        "title": "Ring",
+        "discountPrice": "$56.00",
+        "price": "$65.00"
+    },
+    {
+        "image": "/images/products/watches-2.jpg",
+        "title": "Watches",
+        "discountPrice": "$35.00",
+        "price": "$55.00"
+    },
+    {
+        "image": "/images/products/shoes.jpg",
+        "title": "Shoes",
+        "discountPrice": "$57.00",
+        "price": "$75.00"
+    }
+], "special-offer": [
+    {
+        "image": "/images/products/perfume.jpg",
+        "title": "Perfume",
+        "discountPrice": "$19.00",
+        "price": "$29.00",
+        "sale": true
+    }
+]}
