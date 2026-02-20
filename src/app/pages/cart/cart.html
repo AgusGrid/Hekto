@@ -2,7 +2,7 @@
     <div class="cart-empty">
         <img src="/images/cart/cart-empty.jpg" alt="cart-empty" class="cart-empty-image">
         <h3 class="cart-empty-title">Your cart is empty</h3>
-        <a href="/products" class="button">Start shopping</a>
+        <a [routerLink]="'/products'" class="button">Start shopping</a>
     </div>
 } @else {
     <section class="cart-container">

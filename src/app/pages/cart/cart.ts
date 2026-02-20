@@ -2,11 +2,12 @@ import { Component, inject, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CartService } from '@app/service/cart.service';
 import { InputCounter } from '@components/input-counter/input-counter';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [CommonModule, InputCounter],
+  imports: [CommonModule, InputCounter, RouterModule],
   templateUrl: './cart.html',
   styleUrl: './cart.scss',
 })
