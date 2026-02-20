@@ -1,9 +1,10 @@
-import { Component, OnInit, signal, computed } from '@angular/core';
+import { Component, OnInit, signal, computed, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '@app/models/product-lister.model';
 import productList from '../product-lister/product-lister.json';
 import { IconComponent } from '@components/icon/icon.component';
+import { CartService } from '@app/service/cart.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -13,6 +14,10 @@ import { IconComponent } from '@components/icon/icon.component';
   styleUrl: './product-detail.scss',
 })
 export class ProductDetailComponent implements OnInit {
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
+  private cartService = inject(CartService);
+
   private allProducts = signal<Product[]>(
     (productList as Product[]).map((product, index) => ({
       ...product,
@@ -32,12 +37,8 @@ export class ProductDetailComponent implements OnInit {
     );
   });
 
-  quantity = signal<number>(1);
-
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router
-  ) {}
+  alertMessage = signal<string | null>(null);
+  showAlert = computed(() => this.alertMessage() !== null);
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -45,20 +46,9 @@ export class ProductDetailComponent implements OnInit {
       this.productId.set(id);
       
       if (!this.product()) {
-        // Si el producto no se encuentra, redirigir a la lista
         this.router.navigate(['/products']);
       }
     });
-  }
-
-  increaseQuantity(): void {
-    this.quantity.set(this.quantity() + 1);
-  }
-
-  decreaseQuantity(): void {
-    if (this.quantity() > 1) {
-      this.quantity.set(this.quantity() - 1);
-    }
   }
 
   getStars(rating: number): number[] {
@@ -66,16 +56,21 @@ export class ProductDetailComponent implements OnInit {
   }
 
   addToCart(): void {
-    // TODO: Implementar lógica de agregar al carrito
-    console.log('Agregar al carrito:', this.product(), 'Cantidad:', this.quantity());
+    const currentProduct = this.product();
+    
+    if (!currentProduct) {
+      this.showAlertMessage('Error: Product not found');
+      return;
+    }
+
+    this.cartService.addItem(currentProduct, 1);
+    this.showAlertMessage(`${currentProduct.title} has been added to the cart`);
   }
 
-  addToWishlist(): void {
-    // TODO: Implementar lógica de agregar a wishlist
-    console.log('Agregar a wishlist:', this.product());
-  }
-
-  goBackToProducts(): void {
-    this.router.navigate(['/products']);
+  private showAlertMessage(message: string): void {
+    this.alertMessage.set(message);
+    setTimeout(() => {
+      this.alertMessage.set(null);
+    }, 3000);
   }
 }
