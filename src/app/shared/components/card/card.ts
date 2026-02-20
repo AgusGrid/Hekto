@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { CartService } from '@app/service/cart.service';
-import { getProductById } from '@app/utils/product-mapper.util';
+import { ProductHelperService } from '@app/service/product-helper.service';
 import { Product } from '@app/models/product-lister.model';
 
 export type CardVariant = 'featured' | 'latest' | 'trending' | 
@@ -38,7 +38,8 @@ export class Card {
 
   constructor(
     private router: Router,
-    private cartService: CartService
+    private cartService: CartService,
+    private productHelper: ProductHelperService
   ) {}
 
   onViewDetails(): void {
@@ -49,15 +50,19 @@ export class Card {
   }
 
   onAddToCart(): void {
+    let product: Product | undefined;
+
     if (this.product) {
-      this.cartService.addItem(this.product, 1);
-    } 
-    else if (this.productId) {
-      const product = getProductById(this.productId);
-      if (product) this.cartService.addItem(product, 1);
+      product = this.product;
+    } else if (this.productId) {
+      product = this.productHelper.getProductById(this.productId);
     }
-    this.addToCart.emit();
-    this.animateCartButton();
+
+    if (product) {
+      this.cartService.addItem(product, 1);
+      this.addToCart.emit();
+      this.animateCartButton();
+    }
   }
 
   private animateCartButton(): void {

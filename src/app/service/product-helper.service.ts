@@ -24,7 +24,7 @@ export class ProductHelperService {
     return id ? getProductById(id) : undefined;
   }
 
-  getProductById(id: number): Product | undefined {
+  getProductById(id: number | string): Product | undefined {
     return getProductById(id);
   }
 

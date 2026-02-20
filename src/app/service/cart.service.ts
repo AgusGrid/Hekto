@@ -1,6 +1,8 @@
 import { Injectable, signal, computed, effect } from '@angular/core';
 import { CartItem, CartState } from '@app/models/cart-item.model';
 import { Product } from '@app/models/product-lister.model';
+import { parsePrice } from '@app/utils/price.util';
+import { ProductHelperService } from '@app/service/product-helper.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +12,7 @@ export class CartService {
   
   private cartItems = signal<CartItem[]>(this.loadCartFromStorage());
 
-  constructor() {
-    // Guardar en localStorage cada vez que cambie el carrito
+  constructor(private productHelper: ProductHelperService) {
     effect(() => {
       const items = this.cartItems();
       this.saveCartToStorage(items);
@@ -52,8 +53,7 @@ export class CartService {
 
   totalPrice = computed(() => {
     return this.cartItems().reduce((total, item) => {
-      const price = parseFloat(item.product.discountPrice.replace('$', ''));
-      return total + (price * item.quantity);
+      return total + item.totalPrice;
     }, 0);
   });
 
@@ -63,31 +63,58 @@ export class CartService {
     totalPrice: this.totalPrice()
   }));
 
-  addItem(product: Product, quantity?: number): void {
-    if (!quantity) quantity = 1;
+  private calculateItemPrice(product: Product, quantity: number): number {
+    return parsePrice(product.discountPrice) * quantity;
+  }
+
+  private findItemIndex(productId: string | number): number {
+    return this.cartItems().findIndex(
+      item => item.product.id === productId
+    );
+  }
+
+  addItem(product: Product, quantity: number = 1): void {
+    if (!product?.id) {
+      console.warn('Cannot add invalid product to cart');
+      return;
+    }
+
+    if (quantity <= 0) {
+      console.warn('Quantity must be greater than 0');
+      return;
+    }
 
     const currentItems = this.cartItems();
-    
-    const existingItemIndex = currentItems.findIndex(
-      item => item.product.id === product.id
-    );
+    const existingItemIndex = this.findItemIndex(product.id);
 
     if (existingItemIndex >= 0) {
       const updatedItems = [...currentItems];
-      const newQuantity = updatedItems[existingItemIndex].quantity + quantity;
-      const price = parseFloat(product.discountPrice.replace('$', ''));
+      const existingItem = updatedItems[existingItemIndex];
+      const newQuantity = existingItem.quantity + quantity;
+      
       updatedItems[existingItemIndex] = {
-        ...updatedItems[existingItemIndex],
+        ...existingItem,
         quantity: newQuantity,
-        totalPrice: price * newQuantity
+        totalPrice: this.calculateItemPrice(product, newQuantity)
       };
       this.cartItems.set(updatedItems);
     } else {
-      const price = parseFloat(product.discountPrice.replace('$', ''));
       this.cartItems.set([
         ...currentItems,
-        { product, quantity, totalPrice: price * quantity, image: product.image }
+        { 
+          product, 
+          quantity, 
+          totalPrice: this.calculateItemPrice(product, quantity), 
+          image: product.image 
+        }
       ]);
+    }
+  }
+
+  addItemById(productId: string | number, quantity: number = 1): void {
+    const product = this.productHelper.getProductById(productId);
+    if (product) {
+      this.addItem(product, quantity);
     }
   }
 
@@ -103,17 +130,18 @@ export class CartService {
       return;
     }
 
-    const updatedItems = this.cartItems().map(item => {
-      if (item.product.id === productId) {
-        const price = parseFloat(item.product.discountPrice.replace('$', ''));
-        return { 
-          ...item, 
-          quantity,
-          totalPrice: price * quantity
-        };
-      }
-      return item;
-    });
+    const itemIndex = this.findItemIndex(productId);
+    if (itemIndex === -1) return;
+
+    const updatedItems = [...this.cartItems()];
+    const item = updatedItems[itemIndex];
+    
+    updatedItems[itemIndex] = {
+      ...item,
+      quantity,
+      totalPrice: this.calculateItemPrice(item.product, quantity)
+    };
+    
     this.cartItems.set(updatedItems);
   }
   clearCart(): void {
