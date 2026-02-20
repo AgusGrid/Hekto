@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Card } from '@components/card/card';
 import trendingProduct from './trending-product.json';
 import { TrendingProduct as TrendingProductType } from '@models/trending-product.types';
-import { getProductIdByTitleAndImage, getProductById } from '@app/utils/product-mapper.util';
+import { ProductHelperService } from '@app/service/product-helper.service';
 
 @Component({
   selector: 'app-trending-product',
@@ -15,12 +15,13 @@ import { getProductIdByTitleAndImage, getProductById } from '@app/utils/product-
 export class TrendingProduct {
   readonly trendingProduct = signal<TrendingProductType[]>(trendingProduct);
 
+  constructor(private productHelper: ProductHelperService) {}
+
   getProductId(product: TrendingProductType): number | undefined {
-    return getProductIdByTitleAndImage(product.title, product.image);
+    return this.productHelper.getProductId(product);
   }
 
   getProductForCard(product: TrendingProductType) {
-    const id = this.getProductId(product);
-    return id ? getProductById(id) : undefined;
+    return this.productHelper.getProductForCard(product);
   }
 }

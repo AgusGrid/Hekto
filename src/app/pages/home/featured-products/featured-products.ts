@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import featuredProducts from './featured-products.json';
 import { FeaturedProduct } from '@models/featured-products.types';
 import { Card } from '@components/card/card';
-import { getProductById } from '@app/utils/product-mapper.util';
+import { ProductHelperService } from '@app/service/product-helper.service';
 
 @Component({
   selector: 'app-featured-products',
@@ -14,6 +14,8 @@ import { getProductById } from '@app/utils/product-mapper.util';
 export class FeaturedProducts {
   featuredProducts: FeaturedProduct[] = featuredProducts;
   hoveredProductId: number | null = null;
+
+  constructor(private productHelper: ProductHelperService) {}
 
   formatPrice(price: number): string {
     return `$${price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
@@ -28,6 +30,6 @@ export class FeaturedProducts {
   }
 
   getProductForCard(product: FeaturedProduct) {
-    return getProductById(product.id);
+    return this.productHelper.getProductById(product.id);
   }
 } 

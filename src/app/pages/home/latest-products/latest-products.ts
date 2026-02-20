@@ -3,7 +3,7 @@ import { Card } from '@components/card/card';
 import { CommonModule } from '@angular/common';
 import latestProductJson from './latest-products.json';
 import { LatestProductCategory, LatestProduct as LatestProductType } from '@models/latest-product.types';
-import { getProductIdByTitleAndImage, getProductById } from '@app/utils/product-mapper.util';
+import { ProductHelperService } from '@app/service/product-helper.service';
 
 @Component({
   selector: 'app-latest-products',
@@ -22,6 +22,8 @@ export class LatestProducts {
     return this.products[this.activeCategory()] || [];
   });
 
+  constructor(private productHelper: ProductHelperService) {}
+
   setActiveCategory(category: LatestProductCategory): void {
     this.activeCategory.set(category);
   }
@@ -31,11 +33,10 @@ export class LatestProducts {
   }
 
   getProductId(product: LatestProductType): number | undefined {
-    return getProductIdByTitleAndImage(product.title, product.image);
+    return this.productHelper.getProductId(product);
   }
 
   getProductForCard(product: LatestProductType) {
-    const id = this.getProductId(product);
-    return id ? getProductById(id) : undefined;
+    return this.productHelper.getProductForCard(product);
   }
 }
