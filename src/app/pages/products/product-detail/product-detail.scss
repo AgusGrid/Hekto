@@ -6,6 +6,11 @@
   margin: 0 auto;
 }
 
+.product-detail-content-container {
+  display: flex;
+  flex-direction: column;
+}
+
 .product-detail-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -186,8 +191,40 @@
 
 .product-detail-meta {
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  flex-direction: row;
+  gap: 5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  &-item {
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+
+    &.active {
+      &-label {
+        font-weight: $font-bold;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -30%;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background-color: $black;
+      }
+    }
+
+    &:hover {
+      &-label {
+        color: $black;
+      }
+    }
+
+  }
 
   p {
     margin: 0;
@@ -197,6 +234,45 @@
       color: #151875;
     }
   }
+
+}
+
+.product-detail-content {
+  display: flex;
+  margin-top: 3rem;
+  gap: 1rem;
+
+  &-item {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    &__title {
+      color: $black;
+      margin-bottom: 1rem;
+    }
+
+    &__details-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        position: relative;
+        padding-left: 2rem;
+      }
+
+      li::before {
+        content: '✓';
+        color: $success;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+ 
+    }
+  }
+  
 }
 
 .product-detail-alert {
@@ -253,3 +329,65 @@
     margin-bottom: 2rem;
   }
 }
+
+.related-products {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  &__title {
+    text-align: left;
+    margin-bottom: 1rem;
+    color: $black;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 75rem;
+    margin: 0 auto;
+  }
+
+  &__list {
+    display: grid;
+    place-content: center;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  &__card-wrapper {
+    width: 100%;
+  }
+
+  &__pagination {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+  }
+
+  &__dot {
+    width: 1rem; 
+    height: 0.25rem; 
+    border-radius: 0.125rem;
+    background-color: $primary-light;
+    color: #FEBAD7;
+    cursor: pointer;
+    transition: background-color 0.3s ease, width 0.3s ease;
+
+    &--active {
+      background-color: $primary;
+      color: $primary;
+      width: 1.5rem;
+    }
+  }
+}
+
+

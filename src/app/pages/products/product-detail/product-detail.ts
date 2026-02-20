@@ -5,11 +5,16 @@ import { Product } from '@app/models/product-lister.model';
 import productList from '../product-lister/product-lister.json';
 import { IconComponent } from '@components/icon/icon.component';
 import { CartService } from '@app/service/cart.service';
+import { RouterModule } from '@angular/router';
+import featuredProducts from '../../home/featured-products/featured-products.json';
+import { FeaturedProduct } from '@models/featured-products.types';
+import { ProductHelperService } from '@app/service/product-helper.service';
+import { Card } from '@components/card/card'; 
 
-@Component({
+@Component({    
   selector: 'app-product-detail',
   standalone: true,
-  imports: [CommonModule, IconComponent],
+  imports: [CommonModule, IconComponent, RouterModule, Card],
   templateUrl: './product-detail.html',
   styleUrl: './product-detail.scss',
 })
@@ -17,6 +22,7 @@ export class ProductDetailComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   private cartService = inject(CartService);
+  private productHelper = inject(ProductHelperService);
 
   private allProducts = signal<Product[]>(
     (productList as Product[]).map((product, index) => ({
@@ -39,6 +45,11 @@ export class ProductDetailComponent implements OnInit {
 
   alertMessage = signal<string | null>(null);
   showAlert = computed(() => this.alertMessage() !== null);
+
+  activeTab = signal<'description' | 'additionalInfo' | 'reviews' | 'video'>('description');
+
+  relatedProducts: FeaturedProduct[] = featuredProducts;
+  hoveredProductId: number | null = null;
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -67,10 +78,30 @@ export class ProductDetailComponent implements OnInit {
     this.showAlertMessage(`${currentProduct.title} has been added to the cart`);
   }
 
+  setActiveTab(tab: 'description' | 'additionalInfo' | 'reviews' | 'video'): void {
+    this.activeTab.set(tab);
+  }
+
   private showAlertMessage(message: string): void {
     this.alertMessage.set(message);
     setTimeout(() => {
       this.alertMessage.set(null);
     }, 3000);
+  }
+
+  formatPrice(price: number): string {
+    return `$${price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+  }
+
+  onCardHover(productId: number): void {
+    this.hoveredProductId = productId;
+  }
+
+  onCardLeave(): void {
+    this.hoveredProductId = null;
+  }
+
+  getProductForCard(product: FeaturedProduct) {
+    return this.productHelper.getProductById(product.id);
   }
 }
