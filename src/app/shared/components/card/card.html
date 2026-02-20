@@ -6,13 +6,13 @@
             <div class="card-image-wrapper">
                 <img class="card-image" [src]="image || '/images/products/watches.jpg'" [alt]="title || 'card-image'">
                 <div class="card-actions">
-                    <button class="button--shopping-cart">
+                    <button class="button--shopping-cart" (click)="onAddToCart()">
                         <img src="/icons/shared/cart.svg" alt="cart">
                     </button>
                     <button class="button--shopping-cart">
                         <img src="/icons/shared/heart.svg" alt="favorite">
                     </button>
-                    <button class="button--shopping-cart">
+                    <button class="button--shopping-cart" (click)="onViewDetails()">
                         <img src="/icons/shared/search-tertiary.svg" alt="search">
                     </button> 
                 </div>
@@ -45,7 +45,7 @@
                     <button class="button--shopping-cart">
                         <img src="/icons/shared/heart.svg" alt="favorite">
                     </button>
-                    <button class="button--shopping-cart">
+                    <button class="button--shopping-cart" (click)="onViewDetails()">
                         <img src="/icons/shared/search-tertiary.svg" alt="search">
                     </button> 
                 </div>
@@ -145,7 +145,7 @@
                     <button class="button--shopping-cart">
                         <img src="/icons/shared/heart.svg" alt="favorite">
                     </button>
-                    <button class="button--shopping-cart">
+                    <button class="button--shopping-cart" (click)="onViewDetails()">
                         <img src="/icons/shared/search-tertiary.svg" alt="search">
                     </button>
                 </div>
@@ -184,7 +184,7 @@
                     <button class="button--shopping-cart">
                         <img src="/icons/shared/heart.svg" alt="favorite">
                     </button>
-                    <button class="button--shopping-cart">
+                    <button class="button--shopping-cart" (click)="onViewDetails()">
                         <img src="/icons/shared/search-tertiary.svg" alt="search">
                     </button>
                 </div>
