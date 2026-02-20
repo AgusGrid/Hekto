@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import featuredProducts from './featured-products.json';
 import { FeaturedProduct } from '@models/featured-products.types';
 import { Card } from '@components/card/card';
+import { getProductById } from '@app/utils/product-mapper.util';
 
 @Component({
   selector: 'app-featured-products',
@@ -25,4 +26,8 @@ export class FeaturedProducts {
   onCardLeave(): void {
     this.hoveredProductId = null;
   }
-}
+
+  getProductForCard(product: FeaturedProduct) {
+    return getProductById(product.id);
+  }
+} 
