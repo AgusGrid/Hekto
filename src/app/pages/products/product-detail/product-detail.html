@@ -1,0 +1,83 @@
+<section class="product-detail-container" *ngIf="product(); else notFound">
+    <div class="product-detail-wrapper">
+        <div class="product-detail-images-container">
+            <div class="product-detail-thumbnails">
+                <div class="product-detail-thumbnail" *ngFor="let i of [1, 2, 3]">
+                    <img [src]="product()?.image || '/images/products/watches.jpg'" [alt]="product()?.title || 'Product image'">
+                </div>
+            </div>
+            
+            <div class="product-detail-image">
+                <img [src]="product()?.image || '/images/products/watches.jpg'" [alt]="product()?.title || 'Product image'">
+            </div>
+        </div>
+
+        <!-- Product Info -->
+        <div class="product-detail-info">
+            <h3 class="product-detail-title">{{ product()?.title }}</h3>
+            
+            <!-- Rating -->
+            <div class="product-detail-rating" *ngIf="product()?.rating">
+                <div class="product-detail-stars">
+                    <ng-container *ngFor="let star of getStars(product()!.rating); let i = index">
+                        <app-icon 
+                            [color]="(i + 1) <= (product()!.rating || 0) ? '#F9BA00' : '#E5E0FC'" 
+                            [name]="(i + 1) <= (product()!.rating || 0) ? 'star-active' : 'star'" 
+                            size="16">
+                        </app-icon>
+                    </ng-container>
+                </div>
+
+                <span class="product-detail-reviews" *ngIf="product()?.reviews">
+                    ({{ product()?.reviews }} Reviews)
+                </span>
+            </div>
+
+            <!-- Price -->
+            <div class="product-detail-price">
+                <span class="product-detail-price-discount label">{{ product()?.discountPrice }}</span>
+                <span class="product-detail-price-original label-small">{{ product()?.price }}</span>
+            </div>
+
+            <!-- Description -->
+            <div class="product-detail-description">
+                <p class="body-text">{{ product()?.description }}</p>
+            </div>
+
+            <!-- Offers -->
+            <div class="product-detail-offers" *ngIf="product()?.cashback || product()?.discountOffer">
+                <p class="body-text" *ngIf="product()?.cashback">
+                    <strong>Cashback:</strong> {{ product()?.cashback }}
+                </p>
+                <p class="body-text" *ngIf="product()?.discountOffer">
+                    <strong>Discount:</strong> {{ product()?.discountOffer }}
+                </p>
+            </div>
+
+    
+
+            <!-- Action Buttons -->
+            <div class="product-detail-actions">
+                <button class="button button--primary" (click)="addToCart()">
+                    Add To Cart
+                </button>
+                <button class="button button--secondary" (click)="addToWishlist()">
+                    <app-icon name="heart" size="20"></app-icon>
+                   
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<ng-template #notFound>
+    <section class="product-detail-container">
+        <div class="product-detail-not-found">
+            <h2>Producto no encontrado</h2>
+            <p>El producto que buscas no existe o ha sido eliminado.</p>
+            <button class="button--primary" (click)="goBackToProducts()">
+                Volver a Productos
+            </button>
+        </div>
+    </section>
+</ng-template>
