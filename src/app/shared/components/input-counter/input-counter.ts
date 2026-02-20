@@ -12,12 +12,16 @@ export class InputCounter {
   @Output() valueChange = new EventEmitter<number>();
 
   increment(): void { 
-    this.value < 100 && this.value++;
-    this.valueChange.emit(this.value);
+    if (this.value < 100) {
+      const newValue = this.value + 1;
+      this.valueChange.emit(newValue);
+    }
   }
 
   decrement(): void { 
-    this.value > 1 && this.value--;
-    this.valueChange.emit(this.value);
+    if (this.value > 0) {
+      const newValue = this.value - 1;
+      this.valueChange.emit(newValue);
+    }
   }
 }

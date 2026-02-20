@@ -18,6 +18,10 @@ export const routes: Routes = [
     loadComponent: () => import("@pages/ui-kit/ui-kit.component").then(m => m.UiKitComponent)
   },
   {
+    path: 'cart',
+    loadComponent: () => import("@app/pages/cart/cart").then(m => m.CartComponent)
+  },
+  {
     path: '**',
     redirectTo: '',
     pathMatch: 'full'
