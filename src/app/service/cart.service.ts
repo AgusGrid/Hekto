@@ -1,4 +1,4 @@
-import { Injectable, signal, computed } from '@angular/core';
+import { Injectable, signal, computed, effect } from '@angular/core';
 import { CartItem, CartState } from '@app/models/cart-item.model';
 import { Product } from '@app/models/product-lister.model';
 
@@ -6,7 +6,45 @@ import { Product } from '@app/models/product-lister.model';
   providedIn: 'root'
 })
 export class CartService {
-  private cartItems = signal<CartItem[]>([]);
+  private readonly STORAGE_KEY = 'cart_items';
+  
+  private cartItems = signal<CartItem[]>(this.loadCartFromStorage());
+
+  constructor() {
+    // Guardar en localStorage cada vez que cambie el carrito
+    effect(() => {
+      const items = this.cartItems();
+      this.saveCartToStorage(items);
+    });
+  }
+
+  private loadCartFromStorage(): CartItem[] {
+    if (typeof window === 'undefined' || !window.localStorage) {
+      return [];
+    }
+    
+    try {
+      const stored = localStorage.getItem(this.STORAGE_KEY);
+      if (stored) {
+        return JSON.parse(stored);
+      }
+    } catch (error) {
+      console.error('Error loading cart from storage:', error);
+    }
+    return [];
+  }
+
+  private saveCartToStorage(items: CartItem[]): void {
+    if (typeof window === 'undefined' || !window.localStorage) {
+      return;
+    }
+    
+    try {
+      localStorage.setItem(this.STORAGE_KEY, JSON.stringify(items));
+    } catch (error) {
+      console.error('Error saving cart to storage:', error);
+    }
+  }
 
   totalItems = computed(() => {
     return this.cartItems().reduce((total, item) => total + item.quantity, 0);
@@ -25,25 +63,30 @@ export class CartService {
     totalPrice: this.totalPrice()
   }));
 
-  addItem(product: Product, quantity: number = 1): void {
+  addItem(product: Product, quantity?: number): void {
+    if (!quantity) quantity = 1;
+
     const currentItems = this.cartItems();
+    
     const existingItemIndex = currentItems.findIndex(
       item => item.product.id === product.id
     );
 
     if (existingItemIndex >= 0) {
-    // if the product already exists, update the quantity
       const updatedItems = [...currentItems];
+      const newQuantity = updatedItems[existingItemIndex].quantity + quantity;
+      const price = parseFloat(product.discountPrice.replace('$', ''));
       updatedItems[existingItemIndex] = {
         ...updatedItems[existingItemIndex],
-        quantity: updatedItems[existingItemIndex].quantity + quantity
+        quantity: newQuantity,
+        totalPrice: price * newQuantity
       };
       this.cartItems.set(updatedItems);
     } else {
-      // if the product is new, add it to the cart
+      const price = parseFloat(product.discountPrice.replace('$', ''));
       this.cartItems.set([
         ...currentItems,
-        { product, quantity }
+        { product, quantity, totalPrice: price * quantity, image: product.image }
       ]);
     }
   }
@@ -60,14 +103,19 @@ export class CartService {
       return;
     }
 
-    const updatedItems = this.cartItems().map(item =>
-      item.product.id === productId
-        ? { ...item, quantity }
-        : item
-    );
+    const updatedItems = this.cartItems().map(item => {
+      if (item.product.id === productId) {
+        const price = parseFloat(item.product.discountPrice.replace('$', ''));
+        return { 
+          ...item, 
+          quantity,
+          totalPrice: price * quantity
+        };
+      }
+      return item;
+    });
     this.cartItems.set(updatedItems);
   }
-
   clearCart(): void {
     this.cartItems.set([]);
   }
