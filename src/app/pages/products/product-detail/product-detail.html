@@ -1,3 +1,9 @@
+@if (showAlert()) {
+    <div class="product-detail-alert">
+        <p>{{ alertMessage() }}</p>
+    </div>
+}
+
 <section class="product-detail-container" *ngIf="product(); else notFound">
     <div class="product-detail-wrapper">
         <div class="product-detail-images-container">
@@ -61,9 +67,8 @@
                 <button class="button button--primary" (click)="addToCart()">
                     Add To Cart
                 </button>
-                <button class="button button--secondary" (click)="addToWishlist()">
-                    <app-icon name="heart" size="20"></app-icon>
-                   
+                <button class="button button--secondary">
+                    <app-icon name="heart" size="20"></app-icon>      
                 </button>
             </div>
         </div>
@@ -75,9 +80,9 @@
         <div class="product-detail-not-found">
             <h2>Producto no encontrado</h2>
             <p>El producto que buscas no existe o ha sido eliminado.</p>
-            <button class="button--primary" (click)="goBackToProducts()">
+            <a href="/products" class="button--primary">
                 Volver a Productos
-            </button>
+            </a>
         </div>
     </section>
 </ng-template>

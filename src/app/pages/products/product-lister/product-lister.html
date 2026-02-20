@@ -205,16 +205,17 @@
             </div>
             <div class="product-lister-content-body" [class.view-grid]="view() === 'grid'" [class.view-list]="view() === 'list'">
                 <app-card
-                    *ngFor="let product of computedProducts(); trackBy: trackByProduct"
-                    [variant]="view() === 'grid' ? 'filter-wide' : 'filter-grid'"
-                    [image]="product.image"
-                    [title]="product.title"
-                    [price]="product.price"
-                    [discountPrice]="product.discountPrice"
-                    [rating]="product.rating"
-                    [description]="product.description"
-                    [productId]="product.id"
-                />
+                *ngFor="let product of computedProducts(); trackBy: trackByProduct"
+                [variant]="view() === 'grid' ? 'filter-wide' : 'filter-grid'"
+                [image]="product.image"
+                [title]="product.title"
+                [price]="product.price"
+                [discountPrice]="product.discountPrice"
+                [rating]="product.rating"
+                [description]="product.description"
+                [productId]="product.id"
+                [product]="product"
+            />
             </div>
         </div>
     </div>
