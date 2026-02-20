@@ -4,6 +4,7 @@ import { IconComponent } from '@components/icon/icon.component';
 import { Card } from '@components/card/card';
 import productList from './product-lister.json';
 import { Product } from '@app/models/product-lister.model';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-lister',
@@ -15,6 +16,37 @@ import { Product } from '@app/models/product-lister.model';
 export class ProductListerComponent {
   readonly products = signal<Product[]>(productList as Product[]); 
 
+  productId = signal<string | null>(null);
+
+  // get product by id
+  product = computed<Product | undefined>(() => {
+    const id = this.productId();
+    if (!id) return undefined;
+    
+    const idNum = Number(id);
+    return this.products().find(p => p.id === idNum);
+  });
+
+  quantity = signal<number>(1);
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
+
+  ngOnInit(): void {
+    this.route.paramMap.subscribe(params => {
+      const id = params.get('id');
+      this.productId.set(id);
+      
+      if (id && !this.product()) {
+
+        setTimeout(() => {
+          this.router.navigate(['/products']);
+        }, 0);
+      }
+    });
+  }
   trackByProduct(index: number, product: Product): string {
     return product.image + product.title;
   } 
