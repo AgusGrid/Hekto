@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "title": "Top essential Trends in 2023",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit hendrerit ex.",
+        "image": "/images/blog/1.jpg",
+        "date": "21 August, 2023",
+        "author": "John Doe"
+    },
+    {
+        "id": 2,
+        "title": "Top essential Trends in 2021",
+        "description": "Nullam nec fringilla erat, ac dapibus nunc. Integer semper ipsum in fermentum aliquam.",
+        "image": "/images/blog/2.jpg",
+        "date": "21 August, 2023",
+        "author": "John Doe"
+    },
+    {
+        "id": 3,
+        "title": "Top essential Trends in 2023",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit hendrerit ex.",
+        "image": "/images/blog/3.jpg",
+        "date": "21 August, 2023",
+        "author": "John Doe"
+    }
+]

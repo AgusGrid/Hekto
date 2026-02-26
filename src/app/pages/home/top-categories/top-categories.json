@@ -1,0 +1,62 @@
+[
+    {
+        "id": 1,
+        "name": "Perfume",
+        "image": "/images/products/perfume.jpg"
+    },
+    {
+        "id": 2,
+        "name": "Present Box",
+        "image": "/images/products/box.jpg"
+    },
+    {
+        "id": 3,
+        "name": "Watches",
+        "image": "/images/products/watches.jpg"
+    },
+    {
+        "id": 4,
+        "name": "Shoes",
+        "image": "/images/products/shoes.jpg"
+    },
+    {
+        "id": 5,
+        "name": "Bracelet",
+        "image": "/images/products/bracelet.png"
+    },
+    {
+        "id": 6,
+        "name": "Ring",
+        "image": "/images/products/ring.png"
+    },
+    {
+        "id": 7,
+        "name": "Headphones",
+        "image": "/images/products/headphones.jpg"
+    },
+    {
+        "id": 8,
+        "name": "Sunglasses",
+        "image": "/images/products/sunglasses.webp"
+    },
+    {
+        "id": 9,
+        "name": "Jewelry",
+        "image": "/images/products/jewelry.webp"
+    },
+    {
+        "id": 10,
+        "name": "Lamps",
+        "image": "/images/home/lamp.png"
+    },
+    {
+        "id": 11,
+        "name": "Laptops",
+        "image": "/images/home/laptop.png"
+    },
+    {
+        "id": 12,
+        "name": "Furniture",
+        "image": "/images/products/furniture.jpg"
+    }
+]

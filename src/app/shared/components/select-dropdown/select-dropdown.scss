@@ -1,0 +1,83 @@
+@use '../../../../styles/abstracts/variable' as *;
+@use '../../../../styles/components/inputs' as *;
+
+.select-dropdown {
+  position: relative;
+  display: inline-block;
+  min-width: 18.75rem;
+  max-width: 100%;
+
+  &__trigger {
+    @extend %input-base;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    outline: none;
+    padding-right: 2.5rem;
+    user-select: none;
+
+    &:focus,
+    &:hover {
+      outline: 2px solid $primary;
+      outline-offset: -2px;
+    }
+
+    svg {
+      position: absolute;
+      right: 1rem;
+      width: 1rem;
+      height: 1rem;
+      transition: transform 0.2s ease;
+    }
+
+    &--open {
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &__menu {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    right: 0;
+    background-color: $white;
+    border: 1px solid $grey-2;
+    border-radius: .5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    overflow: hidden;
+    animation: fadeIn 0.2s ease;
+  }
+
+  &__option {
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    line-height: 20px;
+    color: $black;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: $grey-1;
+    }
+
+    &--selected {
+      background-color: $grey-2;
+      font-weight: $font-semibold;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,295 @@
+@use '../abstracts/variable' as *;
+
+%input-base {
+    min-width: 18.75rem; // 300px 
+    max-width: 100%;
+    height: 3.25rem;
+    border-radius: .5rem;
+    border: 1px solid $grey-2;
+    text-transform: capitalize;
+    padding: 0 1rem;
+    font-size: 0.875rem; // 14px 
+    line-height: 20px;
+    font-weight: $font-regular;
+    color: $black;
+}
+
+.input-default {
+    @extend %input-base;
+    outline: none;
+
+    &:focus,
+    &:hover {
+        outline: 2px solid $primary;
+        outline-offset: -2px;
+    }
+
+    &--error {
+        @extend %input-base;
+        border-color: $danger;
+        padding-right: 2.5rem; 
+
+        &:focus,
+        &:hover {
+            outline-color: $danger;
+        }
+    }
+}
+
+select {
+    @extend %input-base;
+    outline: none;
+    appearance: none;
+    background-image: url('/icons/shared/chevron-down.svg');
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1rem; 
+    padding-right: 2.5rem; 
+    cursor: pointer;
+
+    &:focus,
+    &:hover {
+        outline: 2px solid $primary;
+        outline-offset: -2px;
+    }
+
+    option {
+        padding: 0.75rem 1rem;
+        font-size: 0.875rem;
+        line-height: 20px;
+        color: $black;
+        background-color: $white;
+
+        &:checked {
+            background-color: $grey-1;
+        }
+
+        &:hover {
+            background-color: $grey-1;
+        }
+    }
+}
+
+.input-error-wrapper {
+    position: relative;
+    display: inline-block;
+
+    .input-default--error {
+        width: 100%;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 1rem; // 16px
+        height: 1rem; // 16px
+        background-image: url('/icons/shared/warning.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        pointer-events: none;
+        z-index: 1;
+    }
+}
+
+// Complex input with a button to the right
+.input-complex {
+    display: flex;
+    height: 3.25rem;
+    font-size: 0.875rem;
+    align-items: center;
+    border: 1px solid $grey-2;
+    background-color: $white;
+    border-radius: .5rem;
+    min-width: 18rem; // 300px 
+    width: 300px;
+    max-width: 100%;
+    gap: 1rem;
+    padding-top: 0.125rem; // 2px    
+    padding-right: 0.125rem; 
+    padding-bottom: 0.125rem; 
+    padding-left: 1rem; 
+
+    input {
+        flex: 1;
+        border: none;
+        padding: 0;
+        min-width: 0;
+        height: auto;
+    }
+
+    .button,
+    .button-input,
+    .button--icon-only 
+    // prefer use "button-input" class over "button" class
+    {
+        flex-shrink: 0;
+        height: 3rem; // 40px
+        font-size: 0.75rem; // 12px 
+    }
+}
+
+/* CHECKBOX */
+
+.checkbox {
+    position: relative;
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+    border-radius: 4px;
+    overflow: visible;
+  
+    input[type="checkbox"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+      cursor: pointer;
+  
+      &:checked + .checkbox__custom {
+        &--purple {
+          background-color: $tertiary;
+          border-color: $tertiary;
+        }
+  
+        &--gold {
+          background-color: $secondary;
+          border-color: $secondary;
+        }
+  
+        &--pink {
+          background-color: $primary;
+          border-color: $primary;
+        }
+  
+        &--green {
+          background-color: $success;
+          border-color: $success;
+        }
+  
+        &::after {
+          content: '';
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%) rotate(45deg);
+          width: 0.375rem;
+          height: 0.75rem;
+          border: solid $white;
+          border-width: 0 2px 2px 0;
+        }
+      }
+  
+      &:focus + .checkbox__custom {
+        outline: none;
+      }
+    }
+  
+    &__custom {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 0.5rem;
+      border: 1px solid $grey-2;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+  
+      // Selected states
+      &--purple {
+        background-color: $info-light;
+        border-color: $info-light;
+      }
+  
+      &--gold {
+        background-color: $secondary-light;
+        border-color: $secondary-light;
+      }
+  
+      &--pink {
+        background-color: $primary-light;
+        border-color: $primary-light;
+      }
+  
+      &--green {
+        background-color: $success-light;
+        border-color: $success-light;
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        background-color: transparent;
+        pointer-events: none;
+        opacity: 0;
+      }
+    }
+
+    &:hover &__custom {
+      transform: scale(1.05);
+    }
+  }
+
+  select.select-minimal {
+    min-width: auto;
+    max-width: none;
+    height: auto;
+    border-radius: 0;
+    border: none;
+    text-transform: none;
+    padding: 0;
+    font-size: inherit;
+    line-height: inherit;
+    font-weight: inherit;
+    color: inherit;
+
+    appearance: none;
+    background: none;
+    margin: 0;
+    font-family: inherit;
+    cursor: pointer;
+    outline: none;
+
+    background-image: url('/icons/shared/chevron-down.svg');
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: 0.75rem;
+    padding-right: 1rem;
+    
+    &::-ms-expand {
+        display: none;
+    }
+    
+    &:hover {
+        opacity: 0.8;
+        outline: none;
+    }
+    
+    &:focus {
+        outline: none;
+    }
+    
+    option {
+        background-color: $white;
+        color: $black;
+        padding: 0.75rem 1rem;
+        font-size: inherit;
+        line-height: 1.5;
+        transition: background-color 0.2s ease, color 0.2s ease;
+
+    }
+}

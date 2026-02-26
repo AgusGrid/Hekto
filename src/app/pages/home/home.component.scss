@@ -1,0 +1,128 @@
+@use '../../../styles/abstracts/variable' as *;
+
+.hero-section {
+    width: 100%;
+
+    background-color: #F2F0FF;
+    position: relative;
+    overflow: hidden;
+
+    .hero-container {
+        max-width: 70rem; 
+        margin: 0 auto;
+        padding: 0 1.6rem; 
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.6rem; 
+        position: relative;
+        min-height: 38rem; 
+    }
+
+    .hero-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 1.2rem; 
+        padding-left: 3.2rem; 
+        position: relative;
+        z-index: 2;
+        width: 100%;
+
+        .hero-image-lamp {
+            position: absolute;
+            width: 19.35rem; 
+            height: 19.35rem;
+            top: 0;
+            left: -216px; 
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .hero-subtitle {
+            color: $primary;
+            text-align: left;
+            margin: 0;
+        }
+
+        .hero-title {
+            color: $black;
+            text-align: left;
+            line-height: 51.2px; 
+            margin: 0;
+        }
+
+        .hero-description {
+            color: $grey-3;
+            text-align: left;
+            margin: 0;
+        }
+
+        .hero-button-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem; 
+            margin-top: 0.4rem; 
+            position: relative;
+        }
+    }
+
+    .hero-image-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+    }
+
+    .hero-image-background {
+        position: absolute;
+        width: 25rem; 
+        height: 25rem; 
+        border-radius: 50%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 0;
+    }
+
+    .hero-image {
+        position: relative;
+        width: 30.95rem; 
+        height: 34.4rem; 
+        object-fit: contain;
+        z-index: 1;
+    }
+
+    .hero-image-discount {
+        position: absolute;
+        width: 6.828rem; 
+        height: 6.9245rem; 
+        top: 75.2px; 
+        right: 40px; 
+        z-index: 2;
+    }
+
+    .hero-slider-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        gap: 0.8rem; 
+        margin-bottom: 1.6rem; 
+
+        .hero-slider-item {
+            transform: rotate(-45deg);
+            width: 9.6px; 
+            height: 9.6px; 
+            border-width: 1px;
+            border: 1px solid $primary;
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+            &.active {
+                background-color: $primary;
+            }
+        }
+    }
+}

@@ -1,0 +1,9 @@
+@use '../abstracts/variable' as *;
+
+* {
+    font-family: $font-primary;
+}
+
+html {
+    font-size: $font-size-base;
+}
