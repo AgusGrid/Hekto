@@ -32,6 +32,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   startAutoSlide(): void {
+    if (typeof window === 'undefined') {
+      return;
+    }
     this.slideInterval = window.setInterval(() => {
       this.nextSlide();
     }, 5000);
