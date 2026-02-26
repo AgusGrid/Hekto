@@ -1,0 +1,3 @@
+[build]
+  command = "npm run build && cp dist/hekto/browser/index.csr.html dist/hekto/browser/index.html"
+  publish = "dist/hekto/browser"
