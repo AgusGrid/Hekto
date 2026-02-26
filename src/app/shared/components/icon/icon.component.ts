@@ -2,7 +2,7 @@ import { Component, Input, OnInit, OnChanges, SimpleChanges, OnDestroy } from '@
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { Subject, takeUntil } from 'rxjs';
+import { Subject, takeUntil, Observable, shareReplay } from 'rxjs';
 
 @Component({
   selector: 'app-icon',
@@ -32,9 +32,8 @@ export class IconComponent implements OnInit, OnChanges, OnDestroy {
   svgContent: SafeHtml = '';
   iconClass = 'icon';
   
-  // cache the svg icons to avoid multiple requests
-  private static cache = new Map<string, string>();
-  // destroy the subscription to avoid memory leaks
+  private static svgCache = new Map<string, string>();
+  private static loadingPromises = new Map<string, Observable<string>>();
   private destroy$ = new Subject<void>();
 
   constructor(
@@ -45,11 +44,12 @@ export class IconComponent implements OnInit, OnChanges, OnDestroy {
   ngOnInit() {
     this.loadIcon();
     if (this.class) this.iconClass += ` ${this.class}`;
-
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes['name'] || changes['size'] || changes['folder']) this.loadIcon();
+    if (changes['name'] || changes['size'] || changes['folder']) {
+      this.loadIcon();
+    }
 
     if (changes['class']) {
       this.iconClass = 'icon';
@@ -65,26 +65,47 @@ export class IconComponent implements OnInit, OnChanges, OnDestroy {
   private loadIcon() {
     if (!this.name) return;
 
-    const cacheKey = `${this.folder}_${this.name}_${this.size}`;
+    const cacheKey = `${this.folder}_${this.name}`;
 
-    if (IconComponent.cache.has(cacheKey)) {
-      const cachedSvg = IconComponent.cache.get(cacheKey)!;
+    if (IconComponent.svgCache.has(cacheKey)) {
+      const cachedSvg = IconComponent.svgCache.get(cacheKey)!;
       this.processSvg(cachedSvg);
       return;
     }
 
+    if (IconComponent.loadingPromises.has(cacheKey)) {
+      IconComponent.loadingPromises.get(cacheKey)!
+        .pipe(takeUntil(this.destroy$))
+        .subscribe({
+          next: (svg) => {
+            this.processSvg(svg);
+          },
+          error: (error) => {
+            console.error(`Icon ${this.name} not found:`, error);
+          }
+        });
+      return;
+    }
+
     const iconPath = `/icons/${this.folder}/${this.name}.svg`;
-    this.http.get(iconPath, { responseType: 'text' })
-      .pipe(takeUntil(this.destroy$))
-      .subscribe({
-        next: (svg) => {
-          IconComponent.cache.set(cacheKey, svg);
-          this.processSvg(svg);
-        },
-        error: (error) => {
-          console.error(`Icon ${this.name} not found:`, error);
-        }
-      });
+    const request$ = this.http.get(iconPath, { responseType: 'text' }).pipe(
+      shareReplay(1),
+      takeUntil(this.destroy$)
+    );
+
+    IconComponent.loadingPromises.set(cacheKey, request$);
+
+    request$.subscribe({
+      next: (svg) => {
+        IconComponent.svgCache.set(cacheKey, svg);
+        IconComponent.loadingPromises.delete(cacheKey);
+        this.processSvg(svg);
+      },
+      error: (error) => {
+        console.error(`Icon ${this.name} not found:`, error);
+        IconComponent.loadingPromises.delete(cacheKey);
+      }
+    });
   }
 
   private processSvg(svg: string) {
@@ -94,8 +115,6 @@ export class IconComponent implements OnInit, OnChanges, OnDestroy {
       .replace(/width="[^"]*"/g, `width="${this.size}"`)
       .replace(/height="[^"]*"/g, `height="${this.size}"`);
 
-    // Angular blocks the svg by default to avoid XSS attacks
-    // so we need to bypass security trust html to avoid XSS attacks
     this.svgContent = this.sanitizer.bypassSecurityTrustHtml(processedSvg);
   }
 }

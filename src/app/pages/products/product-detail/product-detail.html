@@ -1,0 +1,183 @@
+@if (showAlert()) {
+    <div class="product-detail-alert">
+        <p>{{ alertMessage() }}</p>
+    </div>
+}
+
+<section class="product-detail-container" *ngIf="product(); else notFound">
+    <div class="product-detail-wrapper">
+        <div class="product-detail-images-container">
+            <div class="product-detail-thumbnails">
+                <div class="product-detail-thumbnail" *ngFor="let i of [1, 2, 3]">
+                    <img [src]="product()?.image || '/images/products/watches.jpg'" [alt]="product()?.title || 'Product image'">
+                </div>
+            </div>
+            
+            <div class="product-detail-image">
+                <img [src]="product()?.image || '/images/products/watches.jpg'" [alt]="product()?.title || 'Product image'">
+            </div>
+        </div>
+
+        <!-- Product Info -->
+        <div class="product-detail-info">
+            <h3 class="product-detail-title">{{ product()?.title }}</h3>
+            
+            <!-- Rating -->
+            <div class="product-detail-rating" *ngIf="product()?.rating">
+                <div class="product-detail-stars">
+                    <ng-container *ngFor="let star of getStars(product()!.rating); let i = index">
+                        <app-icon 
+                            [color]="(i + 1) <= (product()!.rating || 0) ? '#F9BA00' : '#E5E0FC'" 
+                            [name]="(i + 1) <= (product()!.rating || 0) ? 'star-active' : 'star'" 
+                            size="16">
+                        </app-icon>
+                    </ng-container>
+                </div>
+
+            </div>
+
+            <!-- Price -->
+            <div class="product-detail-price">
+                <span class="product-detail-price-discount label">{{ product()?.discountPrice }}</span>
+                <span class="product-detail-price-original label-small">{{ product()?.price }}</span>
+            </div>
+
+            <!-- Description -->
+            <div class="product-detail-description">
+                <p class="body-text">{{ product()?.description }}</p>
+            </div>
+
+            <!-- Offers -->
+            <div class="product-detail-offers" *ngIf="product()?.cashback || product()?.discountOffer">
+                <p class="body-text" *ngIf="product()?.cashback">
+                    <strong>Cashback:</strong> {{ product()?.cashback }}
+                </p>
+                <p class="body-text" *ngIf="product()?.discountOffer">
+                    <strong>Discount:</strong> {{ product()?.discountOffer }}
+                </p>
+            </div>
+
+    
+
+            <!-- Action Buttons -->
+            <div class="product-detail-actions">
+                <button class="button button--primary" (click)="addToCart()">
+                    Add To Cart
+                </button>
+                <button class="button button--secondary">
+                    <app-icon name="heart" size="20"></app-icon>      
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="product-detail-container">
+    <div class="product-detail-content-container">
+        <div class="product-detail-wrapper">
+            <ul class="product-detail-meta">
+                <li class="product-detail-meta-item" 
+                    [class.active]="activeTab() === 'description'"
+                    (click)="setActiveTab('description')">
+                    <p class="product-detail-meta-item-label subtitle-2">Description</p>
+                </li>
+                <li class="product-detail-meta-item" 
+                    [class.active]="activeTab() === 'additionalInfo'"
+                    (click)="setActiveTab('additionalInfo')">
+                    <p class="product-detail-meta-item-label subtitle-2">Additional</p>
+                </li>
+                <li class="product-detail-meta-item" 
+                    [class.active]="activeTab() === 'reviews'"
+                    (click)="setActiveTab('reviews')">
+                    <p class="product-detail-meta-item-label subtitle-2">Reviews</p>
+                </li>
+                <li class="product-detail-meta-item" 
+                    [class.active]="activeTab() === 'video'"
+                    (click)="setActiveTab('video')">
+                    <p class="product-detail-meta-item-label subtitle-2">Video</p>
+                </li>
+            </ul>
+        </div>
+        <div class="product-detail-content">
+        @if (activeTab() === 'description') {
+            <div class="product-detail-content-item">
+                <div class="product-detail-content-item__description">
+                    <p class="product-detail-content-item__title subtitle-3">
+                        Varius tempor
+                    </p>
+                    <p class="product-detail-content-item__text body-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ac quam dolor. In dignissim lectus sed nisl tempor, ac porttitor libero consectetur. Pellentesque diam dolor, tincidunt nec ante congue, tincidunt facilisis tortor. Mauris vitae massa molestie, sagittis ligula vel, egestas massa. Phasellus quis sodales augue. Donec nec ultricies diam. Integer feugiat odio ut dictum viverra. Donec vehicula nisi placerat cursus mollis. Nunc aliquam tempor justo, ut sagittis nisi. Mauris ullamcorper quis nisl sed dictum. Maecenas quam risus, congue quis accumsan at, imperdiet sed lectus. Aliquam in est purus
+                    </p>
+                </div>
+                <div class="product-detail-content-item-details">
+                    <p class="product-detail-content-item__title subtitle-3">More Details</p>
+                    <ul class="product-detail-content-item__details-list">
+                        <li class="body-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ac quam dolor. In dignissim lectus sed nisl tempor, ac porttitor libero consectetur.</li>
+                        <li class="body-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ac quam dolor. In dignissim lectus sed nisl tempor, ac porttitor libero consectetur.</li>
+                        <li class="body-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ac quam dolor. In dignissim lectus sed nisl tempor, ac porttitor libero consectetur.</li>
+                        <li class="body-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ac quam dolor. In dignissim lectus sed nisl tempor, ac porttitor libero consectetur.</li>
+                        <li class="body-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ac quam dolor. In dignissim lectus sed nisl tempor, ac porttitor libero consectetur.</li>
+                    </ul>
+                </div>
+            </div>
+        } @else if (activeTab() === 'additionalInfo') {
+            <div class="product-detail-content-item">
+                <p class="body-text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ac quam dolor. In dignissim lectus sed nisl tempor, ac porttitor libero consectetur. Pellentesque diam dolor, tincidunt nec ante congue, tincidunt facilisis tortor. Mauris vitae massa molestie, sagittis ligula vel, egestas massa. Phasellus quis sodales augue. Donec nec ultricies diam. Integer feugiat odio ut dictum viverra. Donec vehicula nisi placerat cursus mollis. Nunc aliquam tempor justo, ut sagittis nisi. Mauris ullamcorper quis nisl sed dictum. Maecenas quam risus, congue quis accumsan at, imperdiet sed lectus. Aliquam in est purus
+                </p>
+            </div>
+        } @else if (activeTab() === 'reviews') {
+            <div class="product-detail-content-item">
+                <p class="body-text">
+                  There are {{ product()?.reviews || 'No reviews available' }} reviews for this product.
+                </p>
+            </div>
+        } @else if (activeTab() === 'video') {
+            <div class="product-detail-content-item">
+                <div class="product-detail-video">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/ScMzIvxBSi4?controls=0&modestbranding=1&rel=0&loop=1&playlist=ScMzIvxBSi4&mute=1&autoplay=1" title="Product demonstration video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+        }
+        
+        </div>
+    </div>
+</section>
+
+<section class="product-detail-container">
+    <div class="related-products">
+        <p class="related-products__title subtitle-2">Related Products</p>
+        <div class="related-products__container">
+            <div class="related-products__list">
+                <div 
+                    *ngFor="let product of relatedProducts"
+                    class="related-products__card-wrapper"
+                    (mouseenter)="onCardHover(product.id)"
+                    (mouseleave)="onCardLeave()"
+                >
+                    <app-card 
+                        variant="featured"
+                        [image]="product.image"
+                        [title]="product.name"
+                        [code]="product.code"
+                        [price]="formatPrice(product.price)"
+                        [productId]="product.id"
+                        [product]="getProductForCard(product)"
+                    />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<ng-template #notFound>
+    <section class="product-detail-container">
+        <div class="product-detail-not-found">
+            <h2>Product not found</h2>
+            <p>The product you are looking for does not exist or has been deleted.</p>
+            <a [routerLink]="'/products'" class="button--primary">
+                Back to Products
+            </a>
+        </div>
+    </section>
+</ng-template>
