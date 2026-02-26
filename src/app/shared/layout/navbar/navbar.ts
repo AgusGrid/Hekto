@@ -12,9 +12,9 @@ import { IconComponent } from '@components/icon/icon.component';
 })
 export class Navbar {
   menuItems = [
-    { label: 'Home', path: '/', enabled: true },
-    { label: 'Products', path: '/products', enabled: true },
-    { label: 'Blog', path: '/blog', enabled: false },
-    { label: 'Contact', path: '/contact', enabled: false }
+    { label: 'Home', path: '/' },
+    { label: 'Products', path: '/products' },
+    { label: 'Blog', path: '/blog' },
+    { label: 'Contact', path: '/contact' }
   ];
 }

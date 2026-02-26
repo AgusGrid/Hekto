@@ -6,13 +6,13 @@
             <div class="card-image-wrapper">
                 <img class="card-image" [src]="image || '/images/products/watches.jpg'" [alt]="title || 'card-image'">
                 <div class="card-actions">
-                    <button class="button--shopping-cart" [class.cart-button-animated]="cartButtonAnimated" (click)="onAddToCart()">
+                    <button class="button--shopping-cart">
                         <img src="/icons/shared/cart.svg" alt="cart">
                     </button>
                     <button class="button--shopping-cart">
                         <img src="/icons/shared/heart.svg" alt="favorite">
                     </button>
-                    <button class="button--shopping-cart" (click)="onViewDetails()">
+                    <button class="button--shopping-cart">
                         <img src="/icons/shared/search-tertiary.svg" alt="search">
                     </button> 
                 </div>
@@ -39,13 +39,13 @@
                 </ng-template>
                 <img [src]="image || '/images/products/watches.jpg'" [alt]="title || 'card-image'">
                 <div class="card-actions">
-                    <button class="button--shopping-cart" [class.cart-button-animated]="cartButtonAnimated" (click)="onAddToCart()">
+                    <button class="button--shopping-cart">
                         <img src="/icons/shared/cart.svg" alt="cart">
                     </button>
                     <button class="button--shopping-cart">
                         <img src="/icons/shared/heart.svg" alt="favorite">
                     </button>
-                    <button class="button--shopping-cart" (click)="onViewDetails()">
+                    <button class="button--shopping-cart">
                         <img src="/icons/shared/search-tertiary.svg" alt="search">
                     </button> 
                 </div>
@@ -63,17 +63,6 @@
         <div *ngSwitchCase="'trending'">
             <div class="card-image-wrapper">
                 <img [src]="image || '/images/products/watches.jpg'" [alt]="title || 'card-image'">
-                <div class="card-actions">
-                    <button class="button--shopping-cart" [class.cart-button-animated]="cartButtonAnimated" (click)="onAddToCart()">
-                        <img src="/icons/shared/cart.svg" alt="cart">
-                    </button>
-                    <button class="button--shopping-cart">
-                        <img src="/icons/shared/heart.svg" alt="favorite">
-                    </button>
-                    <button class="button--shopping-cart" (click)="onViewDetails()">
-                        <img src="/icons/shared/search-tertiary.svg" alt="search">
-                    </button>
-                </div>
             </div>
             <div class="card-content">
                 <p class="card-title label">{{ title || 'Card Title' }}</p>
@@ -150,13 +139,13 @@
                 </div>
                 <p class="card-description-text body-text">{{ description || 'Card Description' }}</p>
                 <div class="card-actions">
-                    <button class="button--shopping-cart" [class.cart-button-animated]="cartButtonAnimated" (click)="onAddToCart()">
+                    <button class="button--shopping-cart">
                         <img src="/icons/shared/cart.svg" alt="cart">
                     </button>
                     <button class="button--shopping-cart">
                         <img src="/icons/shared/heart.svg" alt="favorite">
                     </button>
-                    <button class="button--shopping-cart" (click)="onViewDetails()">
+                    <button class="button--shopping-cart">
                         <img src="/icons/shared/search-tertiary.svg" alt="search">
                     </button>
                 </div>
@@ -189,13 +178,13 @@
 
                 <p class="card-description-text body-text">{{ description || 'Card Description' }}</p>
                 <div class="card-actions">
-                    <button class="button--shopping-cart" [class.cart-button-animated]="cartButtonAnimated" (click)="onAddToCart()">
+                    <button class="button--shopping-cart">
                         <img src="/icons/shared/cart.svg" alt="cart">
                     </button>
                     <button class="button--shopping-cart">
                         <img src="/icons/shared/heart.svg" alt="favorite">
                     </button>
-                    <button class="button--shopping-cart" (click)="onViewDetails()">
+                    <button class="button--shopping-cart">
                         <img src="/icons/shared/search-tertiary.svg" alt="search">
                     </button>
                 </div>

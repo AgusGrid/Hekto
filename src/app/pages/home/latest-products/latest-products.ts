@@ -3,7 +3,6 @@ import { Card } from '@components/card/card';
 import { CommonModule } from '@angular/common';
 import latestProductJson from './latest-products.json';
 import { LatestProductCategory, LatestProduct as LatestProductType } from '@models/latest-product.types';
-import { ProductHelperService } from '@app/service/product-helper.service';
 
 @Component({
   selector: 'app-latest-products',
@@ -22,21 +21,11 @@ export class LatestProducts {
     return this.products[this.activeCategory()] || [];
   });
 
-  constructor(private productHelper: ProductHelperService) {}
-
   setActiveCategory(category: LatestProductCategory): void {
     this.activeCategory.set(category);
   }
 
   trackByProduct(index: number, product: LatestProductType): string {
     return product.image + product.title; 
-  }
-
-  getProductId(product: LatestProductType): number | undefined {
-    return this.productHelper.getProductId(product);
-  }
-
-  getProductForCard(product: LatestProductType) {
-    return this.productHelper.getProductForCard(product);
   }
 }
