@@ -1,0 +1,11 @@
+@use 'variable' as *;
+
+@mixin page-container-padding {
+ padding-left: $page-container-padding-horizontal;
+ padding-right: $page-container-padding-horizontal;
+}
+
+@mixin section-spacing-top {
+  padding-top: $page-container-gap-sections; 
+  padding-bottom: $page-container-gap-sections;
+}

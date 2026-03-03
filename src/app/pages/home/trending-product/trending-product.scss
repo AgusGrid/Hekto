@@ -1,22 +1,25 @@
 @use '../../../../styles/abstracts/variable' as *;
+@use '../../../../styles/abstracts/mixin' as *;
 
 .trending-product-container {
-    width: 100%;
-    min-height: 668px;
+    @include page-container-padding;
+    @include section-spacing-top;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
+
+    background-color: $white;
 
     .trending-product-title {
+        margin-bottom: $page-container-title-gap-vertical;
         color: $black;
     }
 
     .trending-product-list {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 2rem;
+        gap: $page-container-gap-products;
     }
   
 }

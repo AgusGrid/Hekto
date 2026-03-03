@@ -99,9 +99,11 @@
             display: flex;
             align-items: center;
             flex-shrink: 0;
+
             .input-complex {
                 height: 2.5rem;
-
+                width: 20.5rem;
+               
                 button {
                     height: 2.5rem;
                 }

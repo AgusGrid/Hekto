@@ -1,9 +1,9 @@
 @use '../../../../styles/abstracts/variable' as *;
+@use '../../../../styles/abstracts/mixin' as *;
 
 .top-categories-container {
-    width: 100%;
-    min-height:  47.875rem;
-    margin-top: -15rem;
+    @include page-container-padding;
+    @include section-spacing-top;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -12,13 +12,13 @@
     .top-categories-title {
         color: $black;
         text-align: center;
-        margin-bottom: 3rem;
+        margin-bottom: $page-container-title-gap-vertical;
     }
 
     .top-categories-list {
         display: flex;
         flex-direction: row;
-        gap: 2rem;
+        gap: 4rem;
     }
 
     .top-categories-slider-container {
@@ -27,11 +27,11 @@
         align-items: center;
         width: 100%;
         gap: 1rem;
-        margin-top: 2rem;
+        margin-top: 3.8125rem;
 
         .top-categories-slider-item {
-            width: 8px;
-            height: 8px;
+            width: 0.5rem;
+            height: 0.5rem;
             border-radius: 100%;
             border: 1px solid $primary;
             background-color: transparent;

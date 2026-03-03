@@ -1,8 +1,9 @@
 @use "../../../../styles/abstracts/variable" as *;
+@use "../../../../styles/abstracts/mixin" as *;
 
 .featured-products {
-    min-height: 47.25rem; 
-    margin: 0 auto;
+    @include page-container-padding;
+    @include section-spacing-top;
 
     background-color: $white;
 
@@ -13,27 +14,17 @@
 
     &__title {
         text-align: center;
-        margin-bottom: 3rem;
+        margin-bottom: $page-container-title-gap-vertical;
         color: $black;
-    }
-
-    &__container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        max-width: 75rem;
-        margin: 0 auto;
     }
 
     &__list {
         display: grid;
         place-content: center;
         grid-template-columns: repeat(4, 1fr);
-        gap: 2rem;
+        gap: $page-container-gap-products;
         width: 100%;
-        margin-bottom: 2rem;
+        margin-bottom: 77px;
     }
 
     &__card-wrapper {
