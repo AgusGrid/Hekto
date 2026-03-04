@@ -28,22 +28,24 @@
                 </div>
             }
         </div>  
-        <div class="cart-summary">
-            <div class="cart-summary-item">
-                <span class="cart-summary-item-subtotal body-text-bold">Subtotal:</span>
-                <p class="label-bold">${{ cartState().totalPrice.toFixed(2) }}</p>
+        <div class="cart-summary-wrapper">
+            <div class="cart-summary">
+                <div class="cart-summary-item">
+                    <span class="cart-summary-item-subtotal body-text-bold">Subtotal:</span>
+                    <p class="label-bold">${{ cartState().totalPrice.toFixed(2) }}</p>
+                </div>
+                <hr>
+                <div class="cart-summary-item cart-summary-total">
+                    <span class="cart-summary-item-total body-text-bold">Total:</span>
+                    <p class="label-bold">${{ (cartState().totalPrice + 100).toFixed(2) }}</p>
+                </div>
+                <hr>
+                <div class="cart-summary-item">
+                    <span class="cart-summary-item-shipping body-text">Shipping:</span>
+                    <p class="body-text">$100.00</p>
+                </div>
+                <button type="button" class="button cart-checkout">Proceed to checkout</button>
             </div>
-            <hr>
-            <div class="cart-summary-item cart-summary-total">
-                <span class="cart-summary-item-total body-text-bold">Total:</span>
-                <p class="label-bold">${{ (cartState().totalPrice + 100).toFixed(2) }}</p>
-            </div>
-            <hr>
-            <div class="cart-summary-item">
-                <span class="cart-summary-item-shipping body-text">Shipping:</span>
-                <p class="body-text">$100.00</p>
-            </div>
-            <button type="button" class="button cart-checkout">Proceed to checkout</button>
             <button 
                 type="button" 
                 class="cart-clear"

@@ -30,3 +30,9 @@ $font-regular: 400;
 $font-semibold: 600;
 $font-bold: 700;
 $font-size-base: 16px;
+
+/* LAYOUT */
+$page-container-padding-horizontal: 19rem; // 304px -> distance between the edges of the page and the content horizontally
+$page-container-title-gap-vertical: 4.5rem; // 72px -> distance between the title and the content vertically
+$page-container-gap-products: 2rem; // 32px -> distance between the products
+$page-container-gap-sections: 6.25rem; // 100px -> distance between the sections

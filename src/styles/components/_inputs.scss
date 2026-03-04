@@ -1,4 +1,5 @@
 @use '../abstracts/variable' as *;
+@use 'sass:color';
 
 %input-base {
     min-width: 18.75rem; // 300px 
@@ -291,5 +292,55 @@ select {
         line-height: 1.5;
         transition: background-color 0.2s ease, color 0.2s ease;
 
+    }
+  }
+
+  select.select-filter {
+    min-width: auto;
+    max-width: none;
+    height: 2.5rem; // 40px
+    border-radius: 0.25rem; // 4px
+    border: 1px solid $info-light; 
+    text-transform: none;
+    padding: 0 2.5rem 0 0.75rem; 
+    font-size: 0.875rem; // 14px
+    line-height: 1.5;
+    font-weight: $font-regular;
+    color: $black; 
+    background-color: $white; 
+
+    appearance: none;
+    margin: 0;
+    font-family: inherit;
+    cursor: pointer;
+    outline: none;
+
+    background-image: url('/icons/shared/chevron-down.svg');
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 0.75rem;
+    
+    &::-ms-expand {
+        display: none;
+    }
+    
+    &:hover {
+        border-color: color.adjust($info-light, $lightness: -10%);
+        outline: none;
+    }
+    
+    &:focus {
+        outline: 2px solid $primary;
+        outline-offset: -2px;
+        border-color: $primary;
+    }
+    
+    option {
+        background-color: $white;
+        color: $black;
+        padding: 0.75rem 1rem;
+        font-size: 0.875rem;
+        line-height: 1.5;
+        transition: background-color 0.2s ease, color 0.2s ease;
     }
 }

@@ -1,8 +1,10 @@
 @use '../../../../styles/abstracts/variable' as *;
+@use '../../../../styles/abstracts/mixin' as *;
 
 .latest-product {
-    min-height: 47.25rem; 
-    margin: 0 auto;
+    @include page-container-padding;
+    @include section-spacing-top;
+    
     background-color: $white;
     display: flex;
     flex-direction: column;
@@ -15,9 +17,7 @@
         align-items: center;
         justify-content: center;
         width: 100%;
-        max-width: 75rem;
-        margin: 0 auto;
-        margin-bottom: 3rem;
+        margin-bottom: 64px;  
     }
 
     &-nav {
@@ -45,16 +45,6 @@
         color: $black;
     }
 
-    &__container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        max-width: 75rem;
-        margin: 0 auto;
-    }
-
     &__grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -65,5 +55,7 @@
         // fixed height per row to maintain consistency
         grid-auto-rows: 19rem;
         align-content: start;
+        column-gap: $page-container-gap-products;
+        row-gap: 40px
     }
 }

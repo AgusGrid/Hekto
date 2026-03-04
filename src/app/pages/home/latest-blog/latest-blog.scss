@@ -1,14 +1,15 @@
 @use '../../../../styles/abstracts/variable' as *;
+@use '../../../../styles/abstracts/mixin' as *;
 
 .latest-blog-container {
-    width: 100%;
-    height: 729px;
-    margin-top: 8rem;
+    @include page-container-padding;
+    @include section-spacing-top;
+
 
     .latest-blog-content-title {
         color: $black;
         text-align: center;
-        margin-bottom: 3rem;
+        margin-bottom: $page-container-title-gap-vertical;
     }
     
     .latest-blog-content-wrapper {
@@ -16,6 +17,7 @@
         justify-content: center;
         align-items: center;
         gap: 2rem;
+        padding-bottom: 3.8125rem;
     }
     
 }
