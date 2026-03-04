@@ -472,11 +472,11 @@ $card-gap-lg: 1rem;
     // VARIANT: FILTER GRID
     // ============================================
     &--filter-grid {
-        width: 61rem;
-        height: 14.5rem;
+        width: 100%;
+        height: 100%;
         display: grid;
-        grid-template-columns: 30% auto;
-        box-shadow: $card-shadow;
+        grid-template-columns: 288px auto;
+        box-shadow: 8px 24px 32px -16px #10175026;
 
         > div {
             display: contents;
@@ -490,13 +490,15 @@ $card-gap-lg: 1rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            
+            cursor: pointer;
+            padding: 1rem;
+        
+      
             img {
-                width: 18rem;
-                height: 12.5rem;
-                object-fit: cover;
-                border-radius: $card-border-radius;
-                padding: 0 $card-gap-sm;
+                width: 288px  ;
+                height: 200px ;
+       
+                border-radius: 4px;
             }
         }
     
@@ -555,11 +557,11 @@ $card-gap-lg: 1rem;
     // VARIANT: FILTER WIDE
     // ============================================
     &--filter-wide {
-        width: 19rem;
-        height: 28rem;
+        width: 100%;
+        height: 100%;
         display: grid;
-        grid-template-rows: auto 1fr;
-        box-shadow: $card-shadow;
+        grid-template-rows: 200px auto;
+        box-shadow: 8px 24px 32px -16px #10175026;
         background-color: $white;
         border-radius: $card-border-radius;
 
@@ -573,6 +575,7 @@ $card-gap-lg: 1rem;
             align-items: center;
             justify-content: center;
             padding: $card-gap-sm;
+            cursor: pointer;
 
             img {
                 @extend %card-image-base;

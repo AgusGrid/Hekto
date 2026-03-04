@@ -52,12 +52,16 @@ export class ProductDetailComponent implements OnInit {
   hoveredProductId: number | null = null;
 
   ngOnInit(): void {
+    window.scrollTo(0, 0);
+
     this.route.paramMap.subscribe(params => {
       const id = params.get('id');
       this.productId.set(id);
       
       if (!this.product()) {
         this.router.navigate(['/products']);
+      } else {
+        window.scrollTo(0, 0);
       }
     });
   }

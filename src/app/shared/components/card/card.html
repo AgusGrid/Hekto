@@ -123,8 +123,8 @@
 
         <!-- Filter Grid Variant -->
         <div *ngSwitchCase="'filter-grid'">
-            <div class="card-image-wrapper">
-                <img [src]="image || '/images/products/watches.jpg'" [alt]="title || 'card-image'">
+            <div class="card-image-wrapper" (click)="onViewDetails()">
+                <img [src]="image || '/images/products/watches.jpg'"alt="See more" [title]="'See more - ' + (title || 'Product details')">
             </div>
             <div class="card-content">
                 <div class="card-header">
@@ -157,7 +157,7 @@
                         <img src="/icons/shared/heart.svg" alt="favorite">
                     </button>
                     <button class="button--shopping-cart" (click)="onViewDetails()">
-                        <img src="/icons/shared/search-tertiary.svg" alt="search">
+                        <img src="/icons/shared/see-more.svg" alt="search">
                     </button>
                 </div>
             </div>
@@ -165,8 +165,8 @@
 
           <!-- Filter Wide Variant -->
           <div *ngSwitchCase="'filter-wide'">
-            <div class="card-image-wrapper">
-                <img [src]="image || '/images/products/watches.jpg'" [alt]="title || 'card-image'">
+            <div class="card-image-wrapper" (click)="onViewDetails()">
+                <img [src]="image || '/images/products/watches.jpg'" alt="See more" [title]="'See more - ' + (title || 'Product details')">
             </div>
             <div class="card-content">
                 <p class="card-title subtitle-3">{{ title || 'Card Title' }}</p>
@@ -196,7 +196,7 @@
                         <img src="/icons/shared/heart.svg" alt="favorite">
                     </button>
                     <button class="button--shopping-cart" (click)="onViewDetails()">
-                        <img src="/icons/shared/search-tertiary.svg" alt="search">
+                        <img src="/icons/shared/see-more.svg" alt="search">
                     </button>
                 </div>
                

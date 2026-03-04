@@ -180,7 +180,7 @@
             <div class="product-lister-content-header">
                 <span class="product-lister-content-header-item">
                     <label class="body-text">Per Page</label>
-                    <select class="select-minimal" name="per-page" id="per-page" (change)="onPerPageChange($event)">
+                    <select class="select-filter" name="per-page" id="per-page" (change)="onPerPageChange($event)">
                         <option value="3">3</option>
                         <option value="6">6</option>
                         <option value="10" selected>10</option>
@@ -188,7 +188,7 @@
                 </span>
                 <span class="product-lister-content-header-item">
                     <label class="body-text">Sort by</label>
-                    <select class="select-minimal" name="sort-by" id="sort-by" (change)="onSortByChange($event)">
+                    <select class="select-filter" name="sort-by" id="sort-by" (change)="onSortByChange($event)">
                         <option value="price-asc" selected>Price: Low -> High</option>
                         <option value="price-desc">Price: High -> Low</option>
                     </select>
@@ -205,17 +205,17 @@
             </div>
             <div class="product-lister-content-body" [class.view-grid]="view() === 'grid'" [class.view-list]="view() === 'list'">
                 <app-card
-                *ngFor="let product of computedProducts(); trackBy: trackByProduct"
-                [variant]="view() === 'grid' ? 'filter-wide' : 'filter-grid'"
-                [image]="product.image"
-                [title]="product.title"
-                [price]="product.price"
-                [discountPrice]="product.discountPrice"
-                [rating]="product.rating"
-                [description]="product.description"
-                [productId]="product.id"
-                [product]="product"
-            />
+                    *ngFor="let product of computedProducts(); trackBy: trackByProduct"
+                    [variant]="view() === 'grid' ? 'filter-wide' : 'filter-grid'"
+                    [image]="product.image"
+                    [title]="product.title"
+                    [price]="product.price"
+                    [discountPrice]="product.discountPrice"
+                    [rating]="product.rating"
+                    [description]="product.description"
+                    [productId]="product.id"
+                    [product]="product"
+                />
             </div>
         </div>
     </div>

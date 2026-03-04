@@ -1,23 +1,27 @@
 @use '../../../../styles/abstracts/variable' as *;
+@use '../../../../styles/abstracts/mixin' as *;
 
 .product-lister-container {
+    @include page-container-padding;
+    padding-bottom: 11.25rem;
     width: 100%;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-bottom: 6rem;
+
 
     .product-lister-header h1 {
+        padding: 3.5rem 0;
         color: $black;
-        padding: 2rem;
-        margin: 3rem 0;
     }
-
     .product-lister-wrapper {
-       display: grid;
-       grid-template-columns: 1fr 4fr;
-       gap: 6rem;
+        display: grid;
+        grid-template-columns: 1fr 4fr;
+        gap: 10.75rem;
+        align-items: start;
+        box-sizing: border-box;
     }
 
     .product-lister-filter {
@@ -37,7 +41,10 @@
                 font-size: 1rem;
                 margin: 0;
                 padding-bottom: 8px;
-                border-bottom: 1px solid $grey-2;
+                text-decoration: underline;
+                text-decoration-color: $black;
+                text-decoration-thickness: 1px;
+                text-underline-offset: 8px;
             }
 
             &-list {
@@ -56,7 +63,7 @@
                     label {
                         cursor: pointer;
                         font-size: 0.875rem;
-                        color: $black;
+                        color: $grey-3;
                     }
 
                     span {
@@ -113,8 +120,8 @@
 
                     // Rating - Yellow checked
                     input[type="checkbox"][id^="rating"] {
-                        border-color: $grey-2;
-                        background-color: transparent;
+                        background-color: $secondary-light;
+                        border-color: $secondary-light;
 
                         &:checked {
                             background-color: $secondary;
@@ -167,32 +174,29 @@
                 display: flex;
                 align-items: center;
                 gap: 1rem;
+                cursor: pointer;
 
                 label {
                     color: $grey-3;
                 }
-           
-                select {
-                    color: $black;
-                }
-
-                &-view-grid, &-view-list {
-                    cursor: pointer;
-                    &:hover {
-                        transform: scale(1.05);
-                    }
-                }
+        
             }
         }
-
+        
         &-body {
             width: 100%;
+            box-sizing: border-box;
           
-
             &.view-grid {
                 display: grid;
                 grid-template-columns: repeat(3, 1fr);
-                gap: 2rem;
+                row-gap: 2rem;
+                column-gap: 2rem;
+                
+                @media (max-width: 1400px) {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+                
             }
 
             &.view-list {
